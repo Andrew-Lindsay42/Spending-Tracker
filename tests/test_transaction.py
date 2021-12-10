@@ -16,7 +16,7 @@ class TestTransaction(unittest.TestCase):
         self.assertEqual(None, self.transaction.merchant)
     
     def test_transaction_tag_starts_None(self):
-        self.assertEqual(None, self.transaction.name)
+        self.assertEqual(None, self.transaction.tag)
 
     def test_transaction_has_amount(self):
         self.assertEqual(1.00, self.transaction.amount)
@@ -26,10 +26,10 @@ class TestTransaction(unittest.TestCase):
 
     def test_can_create_transaction_with_merchant(self):
         merchant = Merchant('Tesco', True)
-        transaction = Transaction(1.00, datetime.date(2021, 12, 10), merchant, None)
+        transaction = Transaction(1.00, datetime.date(2021, 12, 10), merchant)
         self.assertEqual('Tesco', transaction.merchant.name)
 
     def test_can_create_transaction_with_tag(self):
         tag = Tag('Groceries', True)
         transaction = Transaction(1.00, datetime.date(2021, 12, 10), None, tag)
-        self.assertEqual('Groceries', transaction.merchant.name)
+        self.assertEqual('Groceries', transaction.tag.name)
