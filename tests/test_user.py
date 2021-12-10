@@ -21,4 +21,4 @@ class TestUser(unittest.TestCase):
 
     def test_user_can_update_payday(self):
         self.user.update_payday(12)
-        self.assertEqual(12, self.user.budget)
+        self.assertEqual(12, self.user.payday)
