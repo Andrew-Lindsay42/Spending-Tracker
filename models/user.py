@@ -1,5 +1,6 @@
 class User:
-    def __init__(self, budget, payday, id = None):
+    def __init__(self, name, budget, payday, id = None):
+        self.name = name
         self.budget = budget
         self.payday = payday
         self.id = id

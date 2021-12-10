@@ -4,10 +4,13 @@ from models.user import User
 class TestUser(unittest.TestCase):
     
     def setUp(self):
-        self.user = User(123.45, 26)
+        self.user = User('Andrew', 123.45, 26)
     
     def test_user_id_starts_None(self):
-        self.assertEqual(None, self.user.id)    
+        self.assertEqual(None, self.user.id)  
+
+    def test_user_has_name(self):
+        self.assertEqual('Andrew', self.user.name)  
         
     def test_user_has_budget(self):
         self.assertEqual(123.45, self.user.budget)
