@@ -1,7 +1,7 @@
 import unittest
 from models.merchant import Merchant
 
-class Testmerchant(unittest.TestCase):
+class TestMerchant(unittest.TestCase):
     
     def setUp(self):
         self.merchant = Merchant('Tesco', True)
