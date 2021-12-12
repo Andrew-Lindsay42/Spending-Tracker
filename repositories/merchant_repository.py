@@ -2,7 +2,12 @@ from db.run_sql import run_sql
 from models.merchant import Merchant
 
 def save(merchant):
-    pass
+    sql = "INSERT INTO merchants (name, active, icon_num) VALUES (%s, %s, %s) RETURNING *"
+    values = [merchant.name, merchant.active, merchant.icon_num]
+    results = run_sql(sql, values)
+    id = results[0]['id']
+    merchant.id = id
+    return merchant
 
 def select_all():
     merchant_list = []

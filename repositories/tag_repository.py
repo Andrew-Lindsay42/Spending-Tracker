@@ -2,7 +2,12 @@ from db.run_sql import run_sql
 from models.tag import Tag
 
 def save(tag):
-    pass
+    sql = "INSERT INTO tags (name, active, icon_num) VALUES (%s, %s, %s) RETURNING *"
+    values = [tag.name, tag.active, tag.icon_num]
+    results = run_sql(sql, values)
+    id = results[0]['id']
+    tag.id = id
+    return tag
 
 def select_all():
     tag_list = []

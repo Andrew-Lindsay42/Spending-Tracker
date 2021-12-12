@@ -2,7 +2,12 @@ from db.run_sql import run_sql
 from models.user import User
 
 def save(user):
-    pass
+    sql = "INSERT INTO users (name, budget, payday) VALUES (%s, %s, %s) RETURNING *"
+    values = [user.name, user.budget, user.payday]
+    results = run_sql(sql, values)
+    id = results[0]['id']
+    user.id = id
+    return user
 
 def select_all():
     user_list = []
