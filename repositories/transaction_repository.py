@@ -13,7 +13,8 @@ def select(id):
     pass
 
 def delete_all():
-    pass
+    sql = "DELETE FROM transactions"
+    run_sql(sql)
 
 def delete(id):
     pass

@@ -9,6 +9,7 @@ import repositories.transaction_repository as transaction_repo
 import repositories.user_repository as user_repo
 
 # Delete all existing data in tables
+user_repo.delete_all()
+transaction_repo.delete_all()
 merchant_repo.delete_all()
 tag_repo.delete_all()
-transaction_repo.delete_all()

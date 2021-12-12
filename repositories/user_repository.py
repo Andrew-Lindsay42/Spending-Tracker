@@ -11,7 +11,8 @@ def select(id):
     pass
 
 def delete_all():
-    pass
+    sql = "DELETE FROM users"
+    run_sql(sql)
 
 def delete(id):
     pass
