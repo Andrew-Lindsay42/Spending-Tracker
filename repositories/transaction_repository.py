@@ -4,7 +4,12 @@ from models.tag import Tag
 from models.transaction import Transaction
 
 def save(transaction):
-    pass
+    sql = "INSERT INTO transactions amount, transaction_date, description, merchant, tag) = (%s, %s, %s, %s, %s) WHERE id = %s"
+    values = [transaction.amount, transaction.transaction_date, transaction.description, transaction.merchant.id, transaction.tag.id]
+    results = run_sql(sql, values)
+    id = results[0]['id']
+    transaction.id = id
+    return transaction
 
 def select_all():
     transaction_list = []
