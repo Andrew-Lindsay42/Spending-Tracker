@@ -88,3 +88,22 @@ user_repo.delete(user_with_info.id)
 merchant_repo.delete(greggs.id)
 tag_repo.delete(eating_out.id)
 transaction_repo.delete(dinner.id)
+
+# Update a specific row in table
+default_user.budget = 100
+user_repo.update(default_user)
+
+tesco.active = False
+merchant_repo.update(tesco)
+
+groceries.icon_num = 10
+tag_repo.update(groceries)
+
+forgotten_spend.description = "Can't remember what this was"
+transaction_repo.update(forgotten_spend)
+forgotten_spend.description = "Bougie pie"
+transaction_repo.update(forgotten_spend)
+forgotten_spend.merchant = waitrose
+transaction_repo.update(forgotten_spend)
+forgotten_spend.tag = groceries
+transaction_repo.update(forgotten_spend)

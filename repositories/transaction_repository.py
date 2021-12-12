@@ -51,6 +51,16 @@ def delete(id):
     run_sql(sql, values)
 
 def update(transaction):
-    sql = "UPDATE transactions SET (amount, transaction_date, description, merchant, tag) = (%s, %s, %s, %s, %s) WHERE id = %s"
-    values = [transaction.amount, transaction.date, transaction.description, transaction.merchant.id, transaction.tag.id, transaction.id]
+    if transaction.merchant is None and transaction.tag is None:
+        sql = "UPDATE transactions SET (amount, transaction_date, description) = (%s, %s, %s) WHERE id = %s"
+        values = [transaction.amount, transaction.date, transaction.description, transaction.id]
+    elif transaction.merchant is None:
+        sql = "UPDATE transactions SET (amount, transaction_date, description, tag) = (%s, %s, %s, %s) WHERE id = %s"
+        values = [transaction.amount, transaction.date, transaction.description, transaction.tag.id, transaction.id]
+    elif transaction.tag is None:
+        sql = "UPDATE transactions SET (amount, transaction_date, description, merchant) = (%s, %s, %s, %s) WHERE id = %s"
+        values = [transaction.amount, transaction.date, transaction.description, transaction.merchant.id, transaction.id]
+    else:
+        sql = "UPDATE transactions SET (amount, transaction_date, description, merchant, tag) = (%s, %s, %s, %s, %s) WHERE id = %s"
+        values = [transaction.amount, transaction.date, transaction.description, transaction.merchant.id, transaction.tag.id, transaction.id]
     run_sql(sql, values)
