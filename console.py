@@ -130,6 +130,22 @@ transaction_repo.save(today_shop)
 transaction_repo.save(yesterday_shop)
 transaction_repo.save(day_before_yesterday_shop)
 
-recent_transactions = transaction_repo.get_last_day()
-for recent_transaction in recent_transactions:
-    print(recent_transaction.__dict__)
+# last_day_transactions = transaction_repo.get_last_day()
+# for transaction in last_day_transactions:
+#     print(transaction.__dict__)
+
+# Get transactions from past week
+
+last_week = Transaction(3.14, (datetime.date.today() - datetime.timedelta(days = 7)), 'Last week shop')
+transaction_repo.save(last_week)
+
+# lagnt(transaction.__dict__)
+
+# Get transactions from past month
+
+last_month = Transaction(100, (datetime.date.today() - datetime.timedelta(days = 28)), 'Last month shop')
+transaction_repo.save(last_month)
+
+last_month_transactions = transaction_repo.get_last_month()
+for transaction in last_month_transactions:
+    print(transaction.__dict__)
