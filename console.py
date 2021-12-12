@@ -47,3 +47,24 @@ transaction_repo.save(lunch)
 transaction_repo.save(forgotten_spend)
 transaction_repo.save(dinner)
 
+# Print the data in tables (will test the select all method)
+all_users = user_repo.select_all()
+for user in all_users:
+   print(user.__dict__)
+print('\n')
+
+all_merchants = merchant_repo.select_all()
+for merchant in all_merchants:
+   print(merchant.__dict__)
+print('\n')
+
+all_tags = tag_repo.select_all()
+for tag in all_tags:
+   print(tag.__dict__)
+print('\n')
+
+all_transactions = transaction_repo.select_all()
+for transaction in all_transactions:
+   print(transaction.__dict__)
+print('\n')
+

@@ -27,7 +27,7 @@ def select_all():
     result = run_sql(sql)
 
     for row in result:
-        transaction = Transaction(row['amount'], row['transaction_date'], row['description'], row['merchant'], row['tag'], row['id'])
+        transaction = Transaction(float(row['amount']), row['transaction_date'], row['description'], row['merchant'], row['tag'], row['id'])
         transaction_list.append(transaction)
     return transaction_list
 
@@ -38,7 +38,7 @@ def select(id):
     result = run_sql(sql, values)[0]
     
     if result is not None:
-        transaction = Transaction(result['amount'], result['transaction_date'], result['description'], result['merchant'], result['tag'], result['id'])
+        transaction = Transaction(float(result['amount']), result['transaction_date'], result['description'], result['merchant'], result['tag'], result['id'])
     return transaction
 
 def delete_all():

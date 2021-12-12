@@ -15,7 +15,7 @@ def select_all():
     result = run_sql(sql)
 
     for row in result:
-        user = User(row['name'], row['budget'], row['payday'], row['id'])
+        user = User(row['name'], float(row['budget']), row['payday'], row['id'])
         user_list.append(user)
     return user_list
 
@@ -26,7 +26,7 @@ def select(id):
     result = run_sql(sql, values)[0]
     
     if result is not None:
-        user = User(result['name'], result['budget'], result['payday'], result['id'])
+        user = User(result['name'], float(result['budget']), result['payday'], result['id'])
     return user
 
 def delete_all():
