@@ -107,3 +107,14 @@ forgotten_spend.merchant = waitrose
 transaction_repo.update(forgotten_spend)
 forgotten_spend.tag = groceries
 transaction_repo.update(forgotten_spend)
+
+# Get a list of all the active merchants/tag
+active_merchants = merchant_repo.get_active()
+for merchant in active_merchants:
+   print(merchant.__dict__)
+print('\n')
+
+active_tags = tag_repo.get_active()
+for tag in active_tags:
+   print(tag.__dict__)
+print('\n')
