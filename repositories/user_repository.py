@@ -15,7 +15,14 @@ def select_all():
     return user_list
 
 def select(id):
-    pass
+    user = None
+    sql = 'SELECT * FROM users WHERE id = %s'
+    values = [id]
+    result = run_sql(sql, values)[0]
+    
+    if result is not None:
+        user = User(result['name'], result['budget'], result['payday'], result['id'])
+    return user
 
 def delete_all():
     sql = "DELETE FROM users"

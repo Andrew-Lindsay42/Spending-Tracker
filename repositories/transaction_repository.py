@@ -17,7 +17,14 @@ def select_all():
     return transaction_list
 
 def select(id):
-    pass
+    transaction = None
+    sql = 'SELECT * FROM transactions WHERE id = %s'
+    values = [id]
+    result = run_sql(sql, values)[0]
+    
+    if result is not None:
+        transaction = Transaction(result['amount'], result['transaction_date'], result['description'], result['merchant'], result['tag'], result['id'])
+    return transaction
 
 def delete_all():
     sql = "DELETE FROM transactions"
