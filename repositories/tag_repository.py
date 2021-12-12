@@ -42,3 +42,13 @@ def update(tag):
     sql = "UPDATE tags SET (name, active, icon_num) = (%s, %s, %s) WHERE id = %s"
     values = [tag.name, tag.active, tag.icon_num, tag.id]
     run_sql(sql, values)
+
+def get_active():
+    tag_list = []
+    sql = 'SELECT * FROM tags WHERE active = True'
+    result = run_sql(sql)
+
+    for row in result:
+        tag = Tag(row['name'], row['active'], row['icon_num'], row['id'])
+        tag_list.append(tag)
+    return tag_list
