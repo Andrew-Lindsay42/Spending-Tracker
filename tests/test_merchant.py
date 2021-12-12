@@ -18,3 +18,12 @@ class TestMerchant(unittest.TestCase):
     def test_merchant_has_active_status(self):
         self.assertEqual(True, self.merchant.active)
         self.assertNotEqual(False, self.merchant.active)
+
+    def test_merchant_can_update_status(self):
+        self.merchant.update_status(False)
+        self.assertEqual(False, self.merchant.active)
+        self.assertNotEqual(True, self.merchant.active)
+
+    def test_merchant_can_update_icon(self):
+        self.merchant.update_icon(17)
+        self.assertEqual(17, self.merchant.icon_num)
