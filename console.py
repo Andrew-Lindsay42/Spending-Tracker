@@ -82,3 +82,9 @@ transaction_repo.save(dinner)
 
 # print(transaction_repo.select(lunch.id).__dict__)
 # print('\n')
+
+# Delete a specific row in table
+user_repo.delete(user_with_info.id)
+merchant_repo.delete(greggs.id)
+tag_repo.delete(eating_out.id)
+transaction_repo.delete(dinner.id)
