@@ -64,3 +64,13 @@ def update(transaction):
         sql = "UPDATE transactions SET (amount, transaction_date, description, merchant, tag) = (%s, %s, %s, %s, %s) WHERE id = %s"
         values = [transaction.amount, transaction.date, transaction.description, transaction.merchant.id, transaction.tag.id, transaction.id]
     run_sql(sql, values)
+
+def get_1_day():
+    transaction_list = []
+    sql = "SELECT * FROM transactions WHERE transaction_date BETWEEN GETDATE()-1 AND GETDATE()"
+    result = run_sql(sql)
+    
+    for row in result:
+        transaction = Transaction(float(row['amount']), row['transaction_date'], row['description'], row['merchant'], row['tag'], row['id'])
+        transaction_list.append(transaction)
+    return transaction_list
