@@ -5,7 +5,14 @@ def save(user):
     pass
 
 def select_all():
-    pass
+    user_list = []
+    sql = 'SELECT * FROM users'
+    result = run_sql(sql)
+
+    for row in result:
+        user = User(row['name'], row['budget'], row['payday'], row['id'])
+        user_list.append(user)
+    return user_list
 
 def select(id):
     pass

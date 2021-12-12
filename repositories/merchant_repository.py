@@ -5,7 +5,14 @@ def save(merchant):
     pass
 
 def select_all():
-    pass
+    merchant_list = []
+    sql = 'SELECT * FROM merchants'
+    result = run_sql(sql)
+
+    for row in result:
+        merchant = Merchant(row['name'], row['active'], row['icon_num'], row['id'])
+        merchant_list.append(merchant)
+    return merchant_list
 
 def select(id):
     pass

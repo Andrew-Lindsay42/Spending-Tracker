@@ -7,7 +7,14 @@ def save(transaction):
     pass
 
 def select_all():
-    pass
+    transaction_list = []
+    sql = 'SELECT * FROM transactions'
+    result = run_sql(sql)
+
+    for row in result:
+        transaction = Transaction(row['amount'], row['transaction_date'], row['description'], row['merchant'], row['tag'], row['id'])
+        transaction_list.append(transaction)
+    return transaction_list
 
 def select(id):
     pass

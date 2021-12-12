@@ -5,7 +5,14 @@ def save(tag):
     pass
 
 def select_all():
-    pass
+    tag_list = []
+    sql = 'SELECT * FROM tags'
+    result = run_sql(sql)
+
+    for row in result:
+        tag = Tag(row['name'], row['active'], row['icon_num'], row['id'])
+        tag_list.append(tag)
+    return tag_list
 
 def select(id):
     pass
