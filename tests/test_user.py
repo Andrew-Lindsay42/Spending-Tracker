@@ -18,10 +18,10 @@ class TestUser(unittest.TestCase):
     def test_user_has_payday(self):
         self.assertEqual(26, self.user.payday)
 
-    # def test_user_can_update_budget(self):
-    #     self.user.update_budget(543.21)
-    #     self.assertEqual(543.21, self.user.budget)
+    def test_user_can_update_budget(self):
+        self.user.update_budget(543.21)
+        self.assertEqual(543.21, self.user.budget)
 
-    # def test_user_can_update_payday(self):
-    #     self.user.update_payday(12)
-    #     self.assertEqual(12, self.user.payday)
+    def test_user_can_update_payday(self):
+        self.user.update_payday(12)
+        self.assertEqual(12, self.user.payday)
