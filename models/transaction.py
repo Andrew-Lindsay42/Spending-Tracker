@@ -6,3 +6,18 @@ class Transaction:
         self.merchant = merchant
         self.tag = tag
         self.id = id
+
+    def update_amount(self, new_amount):
+        self.amount = new_amount
+
+    def update_date(self, new_date):
+        self.date = new_date
+
+    def update_description(self, new_description):
+        self.description = new_description
+
+    def update_merchant(self, new_merchant):
+        self.merchant = new_merchant
+
+    def update_tag(self, new_tag):
+        self.tag = new_tag
