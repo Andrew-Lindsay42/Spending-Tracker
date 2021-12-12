@@ -74,3 +74,23 @@ def get_last_day():
         transaction = Transaction(float(row['amount']), row['transaction_date'], row['description'], row['merchant'], row['tag'], row['id'])
         transaction_list.append(transaction)
     return transaction_list
+
+def get_last_week():
+    transaction_list = []
+    sql = "SELECT * FROM transactions WHERE transaction_date BETWEEN CURRENT_DATE -7 AND CURRENT_DATE"
+    result = run_sql(sql)
+
+    for row in result:
+        transaction = Transaction(float(row['amount']), row['transaction_date'], row['description'], row['merchant'], row['tag'], row['id'])
+        transaction_list.append(transaction)
+    return transaction_list
+
+def get_last_month():
+    transaction_list = []
+    sql = "SELECT * FROM transactions WHERE transaction_date BETWEEN CURRENT_DATE -28 AND CURRENT_DATE"
+    result = run_sql(sql)
+
+    for row in result:
+        transaction = Transaction(float(row['amount']), row['transaction_date'], row['description'], row['merchant'], row['tag'], row['id'])
+        transaction_list.append(transaction)
+    return transaction_list
