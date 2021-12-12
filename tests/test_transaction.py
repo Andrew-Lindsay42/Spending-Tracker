@@ -40,3 +40,25 @@ class TestTransaction(unittest.TestCase):
         tag = Tag('Groceries', True)
         transaction = Transaction(1.00, datetime.date(2021, 12, 10), None, None, tag)
         self.assertEqual('Groceries', transaction.tag.name)
+
+    def test_can_update_amount(self):
+        self.transaction.update_amount(2.00)
+        self.assertEqual(2.00, self.transaction.amount)
+
+    def test_can_update_date(self):
+        self.transaction.update_date(datetime.date(2000, 1, 1))
+        self.assertEqual(datetime.date(2000, 1, 1), self.transaction.date)
+
+    def test_can_update_description(self):
+        self.transaction.update_description('Sandwich')
+        self.assertEqual('Sandwich', self.transaction.description)
+
+    def test_can_update_merchant(self):
+        merchant = Merchant('Tesco', True)
+        self.transaction.update_merchant(merchant)
+        self.assertEqual('Tesco', self.transaction.merchant.name)
+
+    def test_can_update_tag(self):
+        tag = Tag('Groceries', True)
+        self.transaction.update_tag(tag)
+        self.assertEqual('Groceries', self.transaction.tag.name)
