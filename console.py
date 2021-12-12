@@ -42,6 +42,7 @@ weekly_shop = Transaction(28.44, datetime.date(2021, 12, 12), 'Weekly shop', tes
 lunch = Transaction(2.00, datetime.date(2021, 12, 8), None, greggs)
 forgotten_spend = Transaction(7.55, datetime.date(2021, 12, 10))
 dinner = Transaction(11.95, datetime.date(2021, 11, 13), 'Dinner', None, eating_out)
+
 transaction_repo.save(weekly_shop)
 transaction_repo.save(lunch)
 transaction_repo.save(forgotten_spend)
@@ -109,12 +110,26 @@ forgotten_spend.tag = groceries
 transaction_repo.update(forgotten_spend)
 
 # Get a list of all the active merchants/tag
-active_merchants = merchant_repo.get_active()
-for merchant in active_merchants:
-   print(merchant.__dict__)
-print('\n')
+# active_merchants = merchant_repo.get_active()
+# for merchant in active_merchants:
+#    print(merchant.__dict__)
+# print('\n')
 
-active_tags = tag_repo.get_active()
-for tag in active_tags:
-   print(tag.__dict__)
-print('\n')
+# active_tags = tag_repo.get_active()
+# for tag in active_tags:
+#    print(tag.__dict__)
+# print('\n')
+
+# Get transactions from past day
+today_shop = Transaction(1.00, datetime.date.today(), 'Today shop')
+yesterday = datetime.date.today() - datetime.timedelta(days = 1)
+yesterday_shop = Transaction(2.00, yesterday, 'Yesterday shop')
+day_before_yesterday = datetime.date.today() - datetime.timedelta(days = 2)
+day_before_yesterday_shop = Transaction(2.00, day_before_yesterday, 'Day before yesterday shop')
+transaction_repo.save(today_shop)
+transaction_repo.save(yesterday_shop)
+transaction_repo.save(day_before_yesterday_shop)
+
+recent_transactions = transaction_repo.get_last_day()
+for recent_transaction in recent_transactions:
+    print(recent_transaction.__dict__)

@@ -65,11 +65,11 @@ def update(transaction):
         values = [transaction.amount, transaction.date, transaction.description, transaction.merchant.id, transaction.tag.id, transaction.id]
     run_sql(sql, values)
 
-def get_1_day():
+def get_last_day():
     transaction_list = []
-    sql = "SELECT * FROM transactions WHERE transaction_date BETWEEN GETDATE()-1 AND GETDATE()"
+    sql = "SELECT * FROM transactions WHERE transaction_date BETWEEN CURRENT_DATE -1 AND CURRENT_DATE"
     result = run_sql(sql)
-    
+
     for row in result:
         transaction = Transaction(float(row['amount']), row['transaction_date'], row['description'], row['merchant'], row['tag'], row['id'])
         transaction_list.append(transaction)
