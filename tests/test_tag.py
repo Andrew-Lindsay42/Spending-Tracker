@@ -18,3 +18,12 @@ class TestTag(unittest.TestCase):
     def test_tag_has_active_status(self):
         self.assertEqual(True, self.tag.active)
         self.assertNotEqual(False, self.tag.active)
+
+    def test_tag_can_update_status(self):
+        self.tag.update_status(False)
+        self.assertEqual(False, self.tag.active)
+        self.assertNotEqual(True, self.tag.active)
+
+    def test_tag_can_update_icon(self):
+        self.tag.update_icon(10)
+        self.assertEqual(10, self.tag.icon_num)
