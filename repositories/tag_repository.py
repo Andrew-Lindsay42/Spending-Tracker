@@ -34,4 +34,6 @@ def delete(id):
     run_sql(sql, values)
 
 def update(tag):
-    pass
+    sql = "UPDATE tags SET (name, active, icon_num) = (%s, %s, %s) WHERE id = %s"
+    values = [tag.name, tag.active, tag.icon_num, tag.id]
+    run_sql(sql, values)
