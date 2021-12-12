@@ -4,8 +4,18 @@ from models.tag import Tag
 from models.transaction import Transaction
 
 def save(transaction):
-    sql = "INSERT INTO transactions amount, transaction_date, description, merchant, tag) = (%s, %s, %s, %s, %s) WHERE id = %s"
-    values = [transaction.amount, transaction.transaction_date, transaction.description, transaction.merchant.id, transaction.tag.id]
+    if transaction.merchant is None and transaction.tag is None:
+        sql = "INSERT INTO transactions (amount, transaction_date, description) VALUES (%s, %s, %s) RETURNING *"
+        values = [transaction.amount, transaction.date, transaction.description]
+    elif transaction.merchant is None:
+        sql = "INSERT INTO transactions (amount, transaction_date, description, tag) VALUES (%s, %s, %s, %s) RETURNING *"
+        values = [transaction.amount, transaction.date, transaction.description, transaction.tag.id]
+    elif transaction.tag is None:
+        sql = "INSERT INTO transactions (amount, transaction_date, description, merchant) VALUES (%s, %s, %s, %s) RETURNING *"
+        values = [transaction.amount, transaction.date, transaction.description, transaction.merchant.id]
+    else:
+        sql = "INSERT INTO transactions (amount, transaction_date, description, merchant, tag) VALUES (%s, %s, %s, %s, %s) RETURNING *"
+        values = [transaction.amount, transaction.date, transaction.description, transaction.merchant.id, transaction.tag.id]
     results = run_sql(sql, values)
     id = results[0]['id']
     transaction.id = id
@@ -42,5 +52,5 @@ def delete(id):
 
 def update(transaction):
     sql = "UPDATE transactions SET (amount, transaction_date, description, merchant, tag) = (%s, %s, %s, %s, %s) WHERE id = %s"
-    values = [transaction.amount, transaction.transaction_date, transaction.description, transaction.merchant.id, transaction.tag.id, transaction.id]
+    values = [transaction.amount, transaction.date, transaction.description, transaction.merchant.id, transaction.tag.id, transaction.id]
     run_sql(sql, values)
