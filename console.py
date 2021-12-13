@@ -121,6 +121,12 @@ for tag in active_tags:
    print(tag.__dict__)
 print('\n')
 
+# Get a list of all the inactive merchants/tags
+inactive_merchants = merchant_repo.get_inactive()
+for merchant in inactive_merchants:
+   print(merchant.__dict__)
+print('\n')
+
 # Get transactions from past day
 today_shop = Transaction(1.00, datetime.date.today(), 'Today shop')
 yesterday = datetime.date.today() - datetime.timedelta(days = 1)
