@@ -1,4 +1,4 @@
-from datetime import date
+import datetime
 from flask import Flask, render_template, request, redirect
 from flask import Blueprint
 from models.transaction import Transaction
@@ -19,14 +19,14 @@ def transactions():
 # GET '/transactions/new'
 @transactions_blueprint.route('/transactions/new')
 def new_transaction():
-    today = date.today()
+    today = datetime.date.today()
     merchants = merchant_repo.get_active()
     tags = tag_repo.get_active()
     return render_template('transactions/new.html', today = today, merchants = merchants, tags = tags)
 
 # CREATE
 # POST '/transactions'
-@transactions_blueprint.route('/transactions', methods = ['POST'])
+@transactions_blueprint.route('/transactions/new', methods = ['POST'])
 def create_transaction():
     date = request.form['date']
     amount = request.form['amount']
@@ -41,7 +41,8 @@ def create_transaction():
         tag = None
     new_transaction = Transaction(amount, date, description, merchant, tag)
     transaction_repo.save(new_transaction)
-    return redirect('transactions/new')
+
+    return redirect(request.referrer)
 
 # SHOW
 # GET '/transactions/<id>
