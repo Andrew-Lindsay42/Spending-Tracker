@@ -48,8 +48,17 @@ def edit_tag(id):
 # PUT '/tags/<id>
 @tags_blueprint.route('/tags/<int:id>', methods = ['POST'])
 def update_tag(id):
-
-    return redirect('tags/show.html')
+    name = request.form['name']
+    icon = request.form['icon']
+    if request.form['status'] == 'True':
+        if 'active' in request.form:
+            active = False
+    else:
+        if 'active' in request.form:
+            active = True
+    updated_tag = tag(name, active, icon, id)
+    tag_repo.update(updated_tag)
+    return redirect('/tags')
 
 # DELETE
 # DELETE '/tags/<id>
