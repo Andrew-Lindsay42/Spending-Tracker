@@ -22,7 +22,7 @@ def new_tag():
 
 # CREATE
 # POST '/tags'
-@tags_blueprint.route('/tags', methods = ['POST'])
+@tags_blueprint.route('/tags/new', methods = ['POST'])
 def create_tag():
     name = request.form['name']
     icon = request.form['icon']
@@ -46,7 +46,7 @@ def edit_tag(id):
 
 # UPDATE
 # PUT '/tags/<id>
-@tags_blueprint.route('/tags/<int:id>', methods = ['POST'])
+@tags_blueprint.route('/tags/<int:id>/edit', methods = ['POST'])
 def update_tag(id):
     name = request.form['name']
     icon = request.form['icon']
@@ -56,7 +56,7 @@ def update_tag(id):
     else:
         if 'active' in request.form:
             active = True
-    updated_tag = tag(name, active, icon, id)
+    updated_tag = Tag(name, active, icon, id)
     tag_repo.update(updated_tag)
     return redirect('/tags')
 

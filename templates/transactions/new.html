@@ -7,10 +7,10 @@
 <div id = "form">
     <form action='/transactions/new' method="post">
         <label for="date">Date:</label>
-        <input type="date" name="date" id="date" value = "{{today}}">
+        <input type="date" name="date" id="date" value = "{{today}}" required>
         <br>
         <label for="amount">Amount:</label>
-        <input type="number" name="amount" id="amount" placeholder = "Amount" step="0.01">
+        <input type="number" name="amount" id="amount" placeholder = "Amount" step="0.01" required>
         <br>
         <label for="description">Description:</label>
         <input type="text" name="description" id="description" placeholder = "Description">
