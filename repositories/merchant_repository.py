@@ -21,12 +21,13 @@ def select_all():
 
 def select(id):
     merchant = None
-    sql = 'SELECT * FROM merchants WHERE id = %s'
-    values = [id]
-    result = run_sql(sql, values)[0]
-    
-    if result is not None:
-        merchant = Merchant(result['name'], result['active'], result['icon_num'], result['id'])
+    if id is not None:
+        sql = 'SELECT * FROM merchants WHERE id = %s'
+        values = [id]
+        result = run_sql(sql, values)[0]
+        
+        if result is not None:
+            merchant = Merchant(result['name'], result['active'], result['icon_num'], result['id'])
     return merchant
 
 def delete_all():

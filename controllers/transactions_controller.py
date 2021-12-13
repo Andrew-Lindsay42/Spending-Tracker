@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, redirect
 from flask import Blueprint
+from repositories import transaction_repository as transaction_repo
+
 
 transactions_blueprint = Blueprint('transactions', __name__)
 
@@ -7,8 +9,9 @@ transactions_blueprint = Blueprint('transactions', __name__)
 # GET '/transactions'
 @transactions_blueprint.route('/transactions')
 def transactions():
-
-    return render_template('transactions/index.html')
+    default_transactions_list = transaction_repo.get_last_week()
+    default_transactions_list.sort(key= lambda transaction : transaction.date)
+    return render_template('transactions/index.html', transactions = default_transactions_list)
 
 # SHOW
 # GET '/transactions/new'

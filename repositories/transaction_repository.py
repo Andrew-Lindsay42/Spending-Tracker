@@ -2,6 +2,8 @@ from db.run_sql import run_sql
 from models.merchant import Merchant
 from models.tag import Tag
 from models.transaction import Transaction
+import repositories.merchant_repository as merchant_repo
+import repositories.tag_repository as tag_repo
 
 def save(transaction):
     if transaction.merchant is None and transaction.tag is None:
@@ -27,7 +29,9 @@ def select_all():
     result = run_sql(sql)
 
     for row in result:
-        transaction = Transaction(float(row['amount']), row['transaction_date'], row['description'], row['merchant'], row['tag'], row['id'])
+        merchant = merchant_repo.select(row['merchant'])
+        tag = tag_repo.select(row['tag'])
+        transaction = Transaction(float(row['amount']), row['transaction_date'], row['description'], merchant, tag, row['id'])
         transaction_list.append(transaction)
     return transaction_list
 
@@ -38,7 +42,9 @@ def select(id):
     result = run_sql(sql, values)[0]
     
     if result is not None:
-        transaction = Transaction(float(result['amount']), result['transaction_date'], result['description'], result['merchant'], result['tag'], result['id'])
+        merchant = merchant_repo.select(result['merchant'])
+        tag = tag_repo.select(result['tag'])
+        transaction = Transaction(float(result['amount']), result['transaction_date'], result['description'], merchant, tag, result['id'])
     return transaction
 
 def delete_all():
@@ -71,7 +77,9 @@ def get_last_day():
     result = run_sql(sql)
 
     for row in result:
-        transaction = Transaction(float(row['amount']), row['transaction_date'], row['description'], row['merchant'], row['tag'], row['id'])
+        merchant = merchant_repo.select(row['merchant'])
+        tag = tag_repo.select(row['tag'])
+        transaction = Transaction(float(row['amount']), row['transaction_date'], row['description'], merchant, tag, row['id'])
         transaction_list.append(transaction)
     return transaction_list
 
@@ -81,7 +89,9 @@ def get_last_week():
     result = run_sql(sql)
 
     for row in result:
-        transaction = Transaction(float(row['amount']), row['transaction_date'], row['description'], row['merchant'], row['tag'], row['id'])
+        merchant = merchant_repo.select(row['merchant'])
+        tag = tag_repo.select(row['tag'])
+        transaction = Transaction(float(row['amount']), row['transaction_date'], row['description'], merchant, tag, row['id'])
         transaction_list.append(transaction)
     return transaction_list
 
@@ -91,7 +101,9 @@ def get_last_month():
     result = run_sql(sql)
 
     for row in result:
-        transaction = Transaction(float(row['amount']), row['transaction_date'], row['description'], row['merchant'], row['tag'], row['id'])
+        merchant = merchant_repo.select(row['merchant'])
+        tag = tag_repo.select(row['tag'])
+        transaction = Transaction(float(row['amount']), row['transaction_date'], row['description'], merchant, tag, row['id'])
         transaction_list.append(transaction)
     return transaction_list
 
@@ -102,6 +114,8 @@ def get_custom_date(start_date, end_date):
     result = run_sql(sql, values)
 
     for row in result:
-        transaction = Transaction(float(row['amount']), row['transaction_date'], row['description'], row['merchant'], row['tag'], row['id'])
+        merchant = merchant_repo.select(row['merchant'])
+        tag = tag_repo.select(row['tag'])
+        transaction = Transaction(float(row['amount']), row['transaction_date'], row['description'], merchant, tag, row['id'])
         transaction_list.append(transaction)
     return transaction_list
