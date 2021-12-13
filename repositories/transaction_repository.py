@@ -80,6 +80,7 @@ def get_last_day():
         merchant = merchant_repo.select(row['merchant'])
         tag = tag_repo.select(row['tag'])
         transaction = Transaction(float(row['amount']), row['transaction_date'], row['description'], merchant, tag, row['id'])
+        transaction.amount = ('{:.2f}'.format(transaction.amount))
         transaction_list.append(transaction)
     transaction_list.sort(key= lambda transaction : transaction.date)
     return transaction_list
@@ -93,6 +94,7 @@ def get_last_week():
         merchant = merchant_repo.select(row['merchant'])
         tag = tag_repo.select(row['tag'])
         transaction = Transaction(float(row['amount']), row['transaction_date'], row['description'], merchant, tag, row['id'])
+        transaction.amount = ('{:.2f}'.format(transaction.amount))
         transaction_list.append(transaction)
     transaction_list.sort(key= lambda transaction : transaction.date)
     return transaction_list
@@ -106,6 +108,7 @@ def get_last_month():
         merchant = merchant_repo.select(row['merchant'])
         tag = tag_repo.select(row['tag'])
         transaction = Transaction(float(row['amount']), row['transaction_date'], row['description'], merchant, tag, row['id'])
+        transaction.amount = ('{:.2f}'.format(transaction.amount))
         transaction_list.append(transaction)
     transaction_list.sort(key= lambda transaction : transaction.date)
     return transaction_list
@@ -120,6 +123,7 @@ def get_custom_date(start_date, end_date):
         merchant = merchant_repo.select(row['merchant'])
         tag = tag_repo.select(row['tag'])
         transaction = Transaction(float(row['amount']), row['transaction_date'], row['description'], merchant, tag, row['id'])
+        transaction.amount = ('{:.2f}'.format(transaction.amount))
         transaction_list.append(transaction)
     transaction_list.sort(key= lambda transaction : transaction.date)
     return transaction_list
