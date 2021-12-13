@@ -94,3 +94,14 @@ def get_last_month():
         transaction = Transaction(float(row['amount']), row['transaction_date'], row['description'], row['merchant'], row['tag'], row['id'])
         transaction_list.append(transaction)
     return transaction_list
+
+def get_custom_date(start_date, end_date):
+    transaction_list = []
+    sql = "SELECT * FROM transactions WHERE transaction_date BETWEEN %s AND %s"
+    values = [start_date, end_date]
+    result = run_sql(sql, values)
+
+    for row in result:
+        transaction = Transaction(float(row['amount']), row['transaction_date'], row['description'], row['merchant'], row['tag'], row['id'])
+        transaction_list.append(transaction)
+    return transaction_list
