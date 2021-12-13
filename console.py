@@ -136,16 +136,30 @@ transaction_repo.save(day_before_yesterday_shop)
 
 # Get transactions from past week
 
-last_week = Transaction(3.14, (datetime.date.today() - datetime.timedelta(days = 7)), 'Last week shop')
-transaction_repo.save(last_week)
+# last_week = Transaction(3.14, (datetime.date.today() - datetime.timedelta(days = 7)), 'Last week shop')
+# transaction_repo.save(last_week)
 
 # lagnt(transaction.__dict__)
 
 # Get transactions from past month
 
-last_month = Transaction(100, (datetime.date.today() - datetime.timedelta(days = 28)), 'Last month shop')
-transaction_repo.save(last_month)
+# last_month = Transaction(100, (datetime.date.today() - datetime.timedelta(days = 28)), 'Last month shop')
+# transaction_repo.save(last_month)
 
-last_month_transactions = transaction_repo.get_last_month()
-for transaction in last_month_transactions:
+# last_month_transactions = transaction_repo.get_last_month()
+# for transaction in last_month_transactions:
+#     print(transaction.__dict__)
+
+# Get user-specified list of transactions
+
+last_year_shop = Transaction(1.00, datetime.date(2020, 1, 12), 'Last year shop')
+pre_pandemic_shop = Transaction(2.00, datetime.date(2019, 3, 4), 'Pre pandemic shop')
+transaction_repo.save(last_year_shop)
+transaction_repo.save(pre_pandemic_shop)
+
+date1 = datetime.date(2019, 1, 1)
+date2 = datetime.date.today()
+
+custom_dates = transaction_repo.get_custom_date(date1, date2)
+for transaction in custom_dates:
     print(transaction.__dict__)
