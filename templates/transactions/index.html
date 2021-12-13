@@ -3,6 +3,7 @@
 <h1>Spending tracker</h1>
 <h2>Transactions</h2>
 <br>This will be the transactions page, also the main page of the app. There will be a table with all the transaction details in, including merchant and tag info. <br><br>
+<a href = "/transactions/new">New Transaction</a><br><br>
 
 <table class="transaction_table">
   <tr class="transaction_table_header">
@@ -11,6 +12,8 @@
     <th>Description</th>
     <th>Merchant</th>
     <th>Tag</th>
+    <th></th>
+    <th></th>
   </tr>
 {% for transaction in transactions %}
     <tr class="transaction_row">
@@ -19,6 +22,13 @@
         <td>{{transaction.description}}</td>
         <td>{{transaction.merchant.name}}</td>
         <td>{{transaction.tag.name}}</td>
+        <td><form action="/transactions/{{transaction.id}}/edit">
+            <button><i class="far fa-edit"></i></button></td>
+            </form>
+        <td><form action="transactions/{{transaction.id}}/delete" method = "post">
+                <button><i class="far fa-trash-alt"></i></button>
+            </form>
+        </td>
     </tr>
 {% endfor %}
 </table>
