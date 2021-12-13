@@ -18,7 +18,7 @@
     </tr>
   {% for merchant in active_merchants %}
       <tr class="active_merchant_row">
-          <td><a href="merchants/{{merchant.id}}">{{merchant.name}}</a></td>
+          <td>{{merchant.name}}</td>
           <td>{{merchant.icon_num}}</td>
           <td>{{merchant.active}}</td>
           <td><form action="merchants/{{merchant.id}}/edit">
@@ -32,7 +32,7 @@
   {% endfor %}
   {% for merchant in inactive_merchants %}
       <tr class="inactive_merchant_row">
-          <td><a href="merchants/{{merchant.id}}">{{merchant.name}}</a></td>
+          <td>{{merchant.name}}</td>
           <td>{{merchant.icon_num}}</td>
           <td>{{merchant.active}}</td>
           <td><form action="merchants/{{merchant.id}}/edit">

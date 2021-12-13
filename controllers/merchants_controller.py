@@ -34,8 +34,7 @@ def create_merchant():
 # GET '/merchants/<id>
 @merchants_blueprint.route('/merchants/<int:id>')
 def show_merchant(id):
-    merchant = merchant_repo.select(id)
-    return render_template('merchants/show.html', merchant = merchant)
+    return redirect('/merchants')
 
 # EDIT
 # GET '/merchants/<id>/edit
