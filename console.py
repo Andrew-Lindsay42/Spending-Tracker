@@ -41,12 +41,12 @@ tag_repo.save(eating_out)
 weekly_shop = Transaction(28.44, datetime.date(2021, 12, 12), 'Weekly shop', tesco, groceries)
 lunch = Transaction(2.00, datetime.date(2021, 12, 8), None, greggs, groceries)
 forgotten_spend = Transaction(7.55, datetime.date(2021, 12, 10))
-# dinner = Transaction(11.95, datetime.date(2021, 11, 13), 'Dinner', None, eating_out)
+dinner = Transaction(11.95, datetime.date(2021, 11, 13), 'Dinner', None, eating_out)
 
 transaction_repo.save(weekly_shop)
 transaction_repo.save(lunch)
 transaction_repo.save(forgotten_spend)
-# transaction_repo.save(dinner)
+transaction_repo.save(dinner)
 
 # Print the data in tables (will test the select all method)
 # Uncomment line 52 - 70 to run
@@ -72,23 +72,23 @@ print('\n')
 
 # Print a selected row (will test the select method)
 # Uncomment line 74 - 84 to run
-# print(user_repo.select(default_user.id).__dict__)
-# print('\n')
+print(user_repo.select(default_user.id).__dict__)
+print('\n')
 
-# print(merchant_repo.select(tesco.id).__dict__)
-# print('\n')
+print(merchant_repo.select(tesco.id).__dict__)
+print('\n')
 
-# print(tag_repo.select(eating_out.id).__dict__)
-# print('\n')
+print(tag_repo.select(eating_out.id).__dict__)
+print('\n')
 
-# print(transaction_repo.select(lunch.id).__dict__)
-# print('\n')
+print(transaction_repo.select(lunch.id).__dict__)
+print('\n')
 
 # Delete a specific row in table
 user_repo.delete(user_with_info.id)
 merchant_repo.delete(greggs.id)
 tag_repo.delete(eating_out.id)
-# transaction_repo.delete(dinner.id)
+transaction_repo.delete(dinner.id)
 
 # Update a specific row in table
 default_user.budget = 100
@@ -100,25 +100,25 @@ merchant_repo.update(tesco)
 groceries.icon_num = 10
 tag_repo.update(groceries)
 
-# forgotten_spend.description = "Can't remember what this was"
-# transaction_repo.update(forgotten_spend)
-# forgotten_spend.description = "Bougie pie"
-# transaction_repo.update(forgotten_spend)
-# forgotten_spend.merchant = waitrose
-# transaction_repo.update(forgotten_spend)
-# forgotten_spend.tag = groceries
-# transaction_repo.update(forgotten_spend)
+forgotten_spend.description = "Can't remember what this was"
+transaction_repo.update(forgotten_spend)
+forgotten_spend.description = "Bougie pie"
+transaction_repo.update(forgotten_spend)
+forgotten_spend.merchant = waitrose
+transaction_repo.update(forgotten_spend)
+forgotten_spend.tag = groceries
+transaction_repo.update(forgotten_spend)
 
 # Get a list of all the active merchants/tag
-# active_merchants = merchant_repo.get_active()
-# for merchant in active_merchants:
-#    print(merchant.__dict__)
-# print('\n')
+active_merchants = merchant_repo.get_active()
+for merchant in active_merchants:
+   print(merchant.__dict__)
+print('\n')
 
-# active_tags = tag_repo.get_active()
-# for tag in active_tags:
-#    print(tag.__dict__)
-# print('\n')
+active_tags = tag_repo.get_active()
+for tag in active_tags:
+   print(tag.__dict__)
+print('\n')
 
 # Get transactions from past day
 today_shop = Transaction(1.00, datetime.date.today(), 'Today shop')
@@ -138,6 +138,10 @@ for transaction in last_day_transactions:
 
 last_week = Transaction(3.14, (datetime.date.today() - datetime.timedelta(days = 7)), 'Last week shop')
 transaction_repo.save(last_week)
+
+last_week_transactions = transaction_repo.get_last_week()
+for transaction in last_week_transactions:
+    print(transaction.__dict__)
 
 #Get transactions from past month
 
