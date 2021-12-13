@@ -13,8 +13,6 @@ def tags():
     inactive_tags = tag_repo.get_inactive()
     return render_template('tags/index.html', active_tags = active_tags, inactive_tags = inactive_tags)
 
-    return render_template('tags/index.html')
-
 # SHOW
 # GET '/tags/new'
 @tags_blueprint.route('/tags/new')
@@ -26,8 +24,11 @@ def new_tag():
 # POST '/tags'
 @tags_blueprint.route('/tags', methods = ['POST'])
 def create_tag():
-
-    return redirect('tags/new.html')
+    name = request.form['name']
+    icon = request.form['icon']
+    new_tag = Tag(name, True, icon)
+    tag_repo.save(new_tag)
+    return redirect(request.referrer)
 
 # SHOW
 # GET '/tags/<id>
