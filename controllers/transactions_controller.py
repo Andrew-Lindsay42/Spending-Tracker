@@ -50,5 +50,5 @@ def update_transaction(id):
 # DELETE '/transactions/<id>
 @transactions_blueprint.route('/transactions/<int:id>/delete', methods = ['POST'])
 def delete_transaction(id):
-    
+    transaction_repo.delete(id)
     return redirect('/transactions')
