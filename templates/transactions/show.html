@@ -4,4 +4,30 @@
 <h2>Transaction info</h2>
 <br>This will be the individual transaction page. It ultimately may not actually be used, but it might be useful for somewhere to display the description of a transaction.
 
+<table class="transaction_table">
+    <tr class="transaction_table_header">
+      <th>Date</th>
+      <th>Amount</th>
+      <th>Description</th>
+      <th>Merchant</th>
+      <th>Tag</th>
+      <th></th>
+      <th></th>
+    </tr>
+    <tr class="transaction_row">
+        <td>{{transaction.date}}</td>
+        <td>{{transaction.amount}}</td>
+        <td>{{transaction.description}}</td>
+        <td>{{transaction.merchant.name}}</td>
+        <td>{{transaction.tag.name}}</td>
+        <td><form action="/transactions/{{transaction.id}}/edit">
+            <button><i class="far fa-edit"></i></button></td>
+            </form>
+        <td><form action="/transactions/{{transaction.id}}/delete" method = "post">
+            <button><i class="far fa-trash-alt"></i></button>
+            </form>
+        </td>
+    </tr>
+</table>
+
 {% endblock %}

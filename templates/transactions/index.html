@@ -9,7 +9,6 @@
   <tr class="transaction_table_header">
     <th>Date</th>
     <th>Amount</th>
-    <th>Description</th>
     <th>Merchant</th>
     <th>Tag</th>
     <th></th>
@@ -18,8 +17,7 @@
 {% for transaction in transactions %}
     <tr class="transaction_row">
         <td>{{transaction.date}}</td>
-        <td>{{transaction.amount}}</td>
-        <td>{{transaction.description}}</td>
+        <td><a href="/transactions/{{transaction.id}}">{{transaction.amount}}</a></td>
         <td>{{transaction.merchant.name}}</td>
         <td>{{transaction.tag.name}}</td>
         <td><form action="/transactions/{{transaction.id}}/edit">

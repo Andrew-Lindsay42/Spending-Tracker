@@ -29,8 +29,8 @@ def create_transaction():
 # GET '/transactions/<id>
 @transactions_blueprint.route('/transactions/<int:id>')
 def show_transaction(id):
-
-    return render_template('transactions/show.html')
+    transaction = transaction_repo.select(id)
+    return render_template('transactions/show.html', transaction = transaction)
 
 # EDIT
 # GET '/transactions/<id>/edit
@@ -47,7 +47,7 @@ def update_transaction(id):
     return redirect('transactions/show.html')
 
 # DELETE
-# DELETE '/transactions/<id>
+# DELETE '/transactions/<id>/delete
 @transactions_blueprint.route('/transactions/<int:id>/delete', methods = ['POST'])
 def delete_transaction(id):
     transaction_repo.delete(id)
