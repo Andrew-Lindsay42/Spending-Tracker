@@ -52,4 +52,5 @@ def get_active():
     for row in result:
         tag = Tag(row['name'], row['active'], row['icon_num'], row['id'])
         tag_list.append(tag)
+    tag_list.sort(key= lambda tag : tag.name)
     return tag_list

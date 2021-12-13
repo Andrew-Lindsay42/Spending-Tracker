@@ -52,4 +52,5 @@ def get_active():
     for row in result:
         merchant = Merchant(row['name'], row['active'], row['icon_num'], row['id'])
         merchant_list.append(merchant)
+    merchant_list.sort(key= lambda merchant : merchant.name)
     return merchant_list

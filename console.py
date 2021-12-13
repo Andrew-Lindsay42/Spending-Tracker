@@ -31,11 +31,11 @@ merchant_repo.save(waitrose)
 merchant_repo.save(amazon)
 merchant_repo.save(greggs)
 
-groceries = Tag('Groceries', True)
-electronics = Tag('Electronics', True, 3)
+groceries = Tag('groceries', True)
+electronics = Tag('ELECTRONICS', True, 3)
 eating_out = Tag('Eating out', False)
-tag_repo.save(groceries)
 tag_repo.save(electronics)
+tag_repo.save(groceries)
 tag_repo.save(eating_out)
 
 weekly_shop = Transaction(28.44, datetime.date(2021, 12, 12), 'Weekly shop', tesco, groceries)
@@ -110,6 +110,7 @@ forgotten_spend.tag = groceries
 transaction_repo.update(forgotten_spend)
 
 # Get a list of all the active merchants/tag
+print('----------------')
 active_merchants = merchant_repo.get_active()
 for merchant in active_merchants:
    print(merchant.__dict__)
