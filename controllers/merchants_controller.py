@@ -64,5 +64,5 @@ def update_merchant(id):
 # DELETE '/merchants/<id>
 @merchants_blueprint.route('/merchants/<int:id>/delete', methods = ['POST'])
 def delete_merchant(id):
-    
+    merchant_repo.delete(id)
     return redirect('/merchants')
