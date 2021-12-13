@@ -127,6 +127,14 @@ for merchant in inactive_merchants:
    print(merchant.__dict__)
 print('\n')
 
+eating_out = Tag('Eating out', False)
+tag_repo.save(eating_out)
+
+inactive_tags = tag_repo.get_inactive()
+for tag in inactive_tags:
+   print(tag.__dict__)
+print('\n')
+
 # Get transactions from past day
 today_shop = Transaction(1.00, datetime.date.today(), 'Today shop')
 yesterday = datetime.date.today() - datetime.timedelta(days = 1)
