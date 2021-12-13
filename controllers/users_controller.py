@@ -16,7 +16,11 @@ def edit_user_budget():
 # PUT '/budget_info
 @users_blueprint.route('/budget_info', methods = ['POST'])
 def update_user_budget():
-
+    budget = request.form['budget']
+    payday = request.form['payday']
+    user = user_repo.select_all()[0]
+    updated_user = User(user.name, budget, payday, user.id)
+    user_repo.update(updated_user)
     return redirect(request.referrer)
 
 

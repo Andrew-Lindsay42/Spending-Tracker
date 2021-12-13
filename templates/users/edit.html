@@ -15,7 +15,7 @@
         <select id="payday" name="payday">
             
         {% for i in range(1, 32) %}
-            <option value="{{ i }}">
+            <option value="{{ i }}" {% if i == user.payday %} selected="selected"{% endif %}>
             {{ i }} 
             </option>
         {% endfor %}
