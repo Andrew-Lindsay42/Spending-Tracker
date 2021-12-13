@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, redirect
 from flask import Blueprint
+from models.tag import Tag
+from repositories import tag_repository as tag_repo
 
 tags_blueprint = Blueprint('tags', __name__)
 
@@ -7,6 +9,9 @@ tags_blueprint = Blueprint('tags', __name__)
 # GET '/tags'
 @tags_blueprint.route('/tags')
 def tags():
+    active_tags = tag_repo.get_active()
+    inactive_tags = tag_repo.get_inactive()
+    return render_template('tags/index.html', active_tags = active_tags, inactive_tags = inactive_tags)
 
     return render_template('tags/index.html')
 

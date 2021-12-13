@@ -6,4 +6,42 @@
 <br><a href = "/budget_info">Budget</a>
 <a href = "/merchants">Merchants</a>
 <a href = "/transactions">Transactions</a><br>
+
+<table class="tags_table">
+    <tr class="tags_table_header">
+      <th>tag</th>
+      <th>Icon</th>
+      <th>Active</th>
+      <th></th>
+      <th></th>
+    </tr>
+  {% for tag in active_tags %}
+      <tr class="active_tag_row">
+          <td>{{tag.name}}</td>
+          <td>{{tag.icon_num}}</td>
+          <td>{{tag.active}}</td>
+          <td><form action="tags/{{tag.id}}/edit">
+              <button><i class="far fa-edit"></i></button></td>
+              </form>
+          <td><form action="tags/{{tag.id}}/delete" method = "post">
+                  <button><i class="far fa-trash-alt"></i></button>
+              </form>
+          </td>
+      </tr>
+  {% endfor %}
+  {% for tag in inactive_tags %}
+      <tr class="inactive_tag_row">
+          <td>{{tag.name}}</td>
+          <td>{{tag.icon_num}}</td>
+          <td>{{tag.active}}</td>
+          <td><form action="tags/{{tag.id}}/edit">
+              <button><i class="far fa-edit"></i></button></td>
+              </form>
+          <td><form action="tags/{{tag.id}}/delete" method = "post">
+                  <button><i class="far fa-trash-alt"></i></button>
+              </form>
+          </td>
+      </tr>
+  {% endfor %}
+  </table>
 {% endblock %}
