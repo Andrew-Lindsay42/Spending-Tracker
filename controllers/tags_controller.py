@@ -35,14 +35,14 @@ def create_tag():
 @tags_blueprint.route('/tags/<int:id>')
 def show_tag(id):
 
-    return render_template('tags/show.html')
+    return render_template('/tags')
 
 # EDIT
 # GET '/tags/<id>/edit
 @tags_blueprint.route('/tags/<int:id>/edit')
 def edit_tag(id):
-
-    return render_template('tags/edit.html')
+    tag = tag_repo.select(id)
+    return render_template('tags/edit.html', tag = tag)
 
 # UPDATE
 # PUT '/tags/<id>
