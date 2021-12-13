@@ -15,6 +15,12 @@ class TestTag(unittest.TestCase):
     def test_tag_has_name(self):
         self.assertEqual('Groceries', self.tag.name)
 
+    def test_merchant_capitalises_name(self):
+        loud_tag = Tag('ELECTRONICS', True)
+        quiet_tag = Tag('eating out', True)
+        self.assertEqual('Electronics', loud_tag.name)
+        self.assertEqual('Eating out', quiet_tag.name)
+
     def test_tag_has_active_status(self):
         self.assertEqual(True, self.tag.active)
         self.assertNotEqual(False, self.tag.active)
