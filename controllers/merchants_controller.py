@@ -48,7 +48,16 @@ def edit_merchant(id):
 # PUT '/merchants/<id>
 @merchants_blueprint.route('/merchants/<int:id>/edit', methods = ['POST'])
 def update_merchant(id):
-
+    name = request.form['name']
+    icon = request.form['icon']
+    if request.form['status'] == 'True':
+        if 'active' in request.form:
+            active = False
+    else:
+        if 'active' in request.form:
+            active = True
+    updated_merchant = Merchant(name, active, icon, id)
+    merchant_repo.update(updated_merchant)
     return redirect('/merchants')
 
 # DELETE

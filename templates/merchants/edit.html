@@ -17,11 +17,12 @@
         <br>
         {% if merchant.active %}
             <label for="active">Set inactive:</label>
-            <input type="checkbox" name="inactive" id="inactive">
+            <input type="checkbox" name="active" id="active">
         {% else %}
-            <label for="inactive">Set active:</label>
+            <label for="active">Set active:</label>
             <input type="checkbox" name="active" id="active">
         {% endif %}
+        <input type="hidden" name="status" id="status" value="{{merchant.active}}">
         <button type="submit">Update Merchant</button>
     </form>
 </div>
