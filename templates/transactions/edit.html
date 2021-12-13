@@ -4,4 +4,42 @@
 <h2>Edit Transaction</h2>
 <br>This will be the edit transaction page. There will be a pre populated form with the existing info, and a button to click to save.
 
+<div id = "form">
+    <form action='/transactions/{{transaction.id}}/edit' method="post">
+        <label for="date">Date:</label>
+        <input type="date" name="date" id="date" value = "{{transaction.date}}">
+        <br>
+        <label for="amount">Amount:</label>
+        <input type="number" name="amount" id="amount" value = "{{transaction.amount}}" step="0.01">
+        <br>
+        <label for="description">Description:</label>
+        <input type="text" name="description" id="description" value = "{{transaction.description}}">
+        <br>
+        <label for="merchant">Merchant:</label>
+        <select id="merchant" name="merchant_id">
+            <option value="no merchant" selected = "selected">
+                No merchant
+            </option>
+        {% for merchant in merchants %}
+            <option value="{{ merchant.id }}" {% if transaction.merchant.id== merchant.id %} selected="selected"{% endif %}>
+            {{ merchant.name }} 
+            </option>
+        {% endfor %}
+        </select>
+        <label for="tag">Tag:</label>
+        <select id="tag" name="tag_id">
+            <option value="no tag" selected = "selected">
+                No tag
+            </option>
+        {% for tag in tags %}
+            <option value="{{ tag.id }}" {% if transaction.tag.id== tag.id %} selected="selected"{% endif %}>
+            {{ tag.name }} 
+            </option>
+        {% endfor %}
+        </select>
+
+        <button type="submit">Update Transaction</button>
+    </form>
+</div>
+
 {% endblock %}

@@ -39,7 +39,7 @@ tag_repo.save(groceries)
 tag_repo.save(eating_out)
 
 weekly_shop = Transaction(28.44, datetime.date(2021, 12, 12), 'Weekly shop', tesco, groceries)
-lunch = Transaction(2.00, datetime.date(2021, 12, 8), None, greggs, groceries)
+lunch = Transaction(2.22, datetime.date(2021, 12, 8), None, greggs, groceries)
 forgotten_spend = Transaction(7.55, datetime.date(2021, 12, 10))
 dinner = Transaction(11.95, datetime.date(2021, 11, 13), 'Dinner', None, eating_out)
 
