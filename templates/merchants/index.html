@@ -6,4 +6,42 @@
 <br><a href = "/budget_info">Budget</a>
 <a href = "/tags">Tags</a>
 <a href = "/transactions">Transactions</a><br>
+
+<table class="merchants_table">
+    <tr class="merchants_table_header">
+      <th>Merchant</th>
+      <th>Icon</th>
+      <th>Active</th>
+      <th></th>
+      <th></th>
+    </tr>
+  {% for merchant in active_merchants %}
+      <tr class="active_merchant_row">
+          <td><a href="merchants/{{merchant.id}}">{{merchant.name}}</a></td>
+          <td>{{merchant.icon_num}}</td>
+          <td>{{merchant.active}}</td>
+          <td><form action="merchants/{{merchant.id}}/edit">
+              <button><i class="far fa-edit"></i></button></td>
+              </form>
+          <td><form action="merchants/{{merchant.id}}//delete" method = "post">
+                  <button><i class="far fa-trash-alt"></i></button>
+              </form>
+          </td>
+      </tr>
+  {% endfor %}
+  {% for merchant in inactive_merchants %}
+      <tr class="inactive_merchant_row">
+          <td><a href="merchants/{{merchant.id}}">{{merchant.name}}</a></td>
+          <td>{{merchant.icon_num}}</td>
+          <td>{{merchant.active}}</td>
+          <td><form action="merchants/{{merchant.id}}/edit">
+              <button><i class="far fa-edit"></i></button></td>
+              </form>
+          <td><form action="merchants/{{merchant.id}}//delete" method = "post">
+                  <button><i class="far fa-trash-alt"></i></button>
+              </form>
+          </td>
+      </tr>
+  {% endfor %}
+  </table>
 {% endblock %}

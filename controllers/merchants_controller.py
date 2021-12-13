@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect
 from flask import Blueprint
+from repositories import merchant_repository as merchant_repo
 
 merchants_blueprint = Blueprint('merchants', __name__)
 
@@ -7,8 +8,9 @@ merchants_blueprint = Blueprint('merchants', __name__)
 # GET '/merchants'
 @merchants_blueprint.route('/merchants')
 def merchants():
-
-    return render_template('merchants/index.html')
+    active_merchants = merchant_repo.get_active()
+    inactive_merchants = merchant_repo.get_inactive()
+    return render_template('merchants/index.html', active_merchants = active_merchants, inactive_merchants = inactive_merchants)
 
 # SHOW
 # GET '/merchants/new'
