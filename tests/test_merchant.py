@@ -15,6 +15,12 @@ class TestMerchant(unittest.TestCase):
     def test_merchant_has_name(self):
         self.assertEqual('Tesco', self.merchant.name)
 
+    def test_merchant_capitalises_name(self):
+        loud_merchant = Merchant('GREGGS', True)
+        quiet_merchant = Merchant('subway', True)
+        self.assertEqual('Greggs', loud_merchant.name)
+        self.assertEqual('Subway', quiet_merchant.name)
+
     def test_merchant_has_active_status(self):
         self.assertEqual(True, self.merchant.active)
         self.assertNotEqual(False, self.merchant.active)
