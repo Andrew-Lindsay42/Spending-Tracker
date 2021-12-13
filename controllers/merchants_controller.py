@@ -21,10 +21,10 @@ def new_merchant():
 
 # CREATE
 # POST '/merchants'
-@merchants_blueprint.route('/merchants', methods = ['POST'])
+@merchants_blueprint.route('/merchants/new', methods = ['POST'])
 def create_merchant():
 
-    return redirect('merchants/new.html')
+    return redirect(request.referrer)
 
 # SHOW
 # GET '/merchants/<id>
@@ -45,11 +45,11 @@ def edit_merchant(id):
 @merchants_blueprint.route('/merchants/<int:id>', methods = ['POST'])
 def update_merchant(id):
 
-    return redirect('merchants/show.html')
+    return redirect('merchants')
 
 # DELETE
 # DELETE '/merchants/<id>
 @merchants_blueprint.route('/merchants/<int:id>/delete', methods = ['POST'])
 def delete_merchant(id):
     
-    return redirect('/merchants')
+    return redirect('merchants')
