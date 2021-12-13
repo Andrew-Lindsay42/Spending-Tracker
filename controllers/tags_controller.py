@@ -64,5 +64,5 @@ def update_tag(id):
 # DELETE '/tags/<id>
 @tags_blueprint.route('/tags/<int:id>/delete', methods = ['POST'])
 def delete_tag(id):
-    
+    tag_repo.delete(id)
     return redirect('/tags')
