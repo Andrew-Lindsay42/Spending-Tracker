@@ -5,4 +5,25 @@
 <br>This will be the edit merchant page. There will be a pre populated form with the existing info, and a button to click to save.
 
 <br><a href = "/merchants">Back to Merchants</a><br>
+
+<div id = "form">
+    <form action='/merchants/{{merchant.id}}/edit' method="post">
+        
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" value = "{{merchant.name}}">
+        <br>
+        <label for="icon">Icon:</label>
+        <input type="number" name="icon" id="icon" value = "{{merchant.icon_num}}" step="1">
+        <br>
+        {% if merchant.active %}
+            <label for="active">Set inactive:</label>
+            <input type="checkbox" name="inactive" id="inactive">
+        {% else %}
+            <label for="inactive">Set active:</label>
+            <input type="checkbox" name="active" id="active">
+        {% endif %}
+        <button type="submit">Update Merchant</button>
+    </form>
+</div>
+
 {% endblock %}
