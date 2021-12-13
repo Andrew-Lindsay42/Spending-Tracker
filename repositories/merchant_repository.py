@@ -54,3 +54,14 @@ def get_active():
         merchant_list.append(merchant)
     merchant_list.sort(key= lambda merchant : merchant.name)
     return merchant_list
+
+def get_inactive():
+    merchant_list = []
+    sql = 'SELECT * FROM merchants WHERE active = False'
+    result = run_sql(sql)
+
+    for row in result:
+        merchant = Merchant(row['name'], row['active'], row['icon_num'], row['id'])
+        merchant_list.append(merchant)
+    merchant_list.sort(key= lambda merchant : merchant.name)
+    return merchant_list
