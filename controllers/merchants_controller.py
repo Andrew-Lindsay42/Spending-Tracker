@@ -28,7 +28,7 @@ def create_merchant():
     icon = request.form['icon']
     new_merchant = Merchant(name, True, icon)
     merchant_repo.save(new_merchant)
-    return redirect(request.referrer)
+    return render_template('merchants/new.html', title = 'New Merchant', message = "Merchant added!")
 
 # SHOW
 # GET '/merchants/<id>

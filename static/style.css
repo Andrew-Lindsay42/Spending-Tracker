@@ -5,11 +5,7 @@
     --darkblue: #31708E;
   }
 
-#message {
-    color:darkred;
-    font-size: x-large;
-    animation: 4s fadeOut forwards;
-}
+
 
 @keyframes fadeOut {
     from {
@@ -138,7 +134,8 @@ background-color: var(--white);
     color: var(--lightblue)
 }
 
-.edit_x {
+.bottom_info {
+    display: flex;
     padding-left: 27vw;
     padding-top: 2vw;
 }
@@ -156,6 +153,14 @@ background-color: var(--white);
 
 .edit_x a:hover {
     color: var(--lightblue)
+}
+
+#message {
+    color:darkred;
+    font-size: x-large;
+    animation: 4s fadeOut forwards;
+    width: 15vw;
+    text-align: center;
 }
 
 .transaction_table {

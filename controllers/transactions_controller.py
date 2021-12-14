@@ -42,7 +42,10 @@ def create_transaction():
     new_transaction = Transaction(amount, date, description, merchant, tag)
     transaction_repo.save(new_transaction)
 
-    return redirect(request.referrer)
+    today = datetime.date.today()
+    merchants = merchant_repo.get_active()
+    tags = tag_repo.get_active()
+    return render_template('transactions/new.html', today = today, merchants = merchants, tags = tags, title = 'New Transaction', message = 'Transaction added!')
 
 # SHOW
 # GET '/transactions/<id>

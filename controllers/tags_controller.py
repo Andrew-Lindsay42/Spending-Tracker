@@ -28,7 +28,7 @@ def create_tag():
     icon = request.form['icon']
     new_tag = Tag(name, True, icon)
     tag_repo.save(new_tag)
-    return redirect(request.referrer)
+    return render_template('tags/new.html', title = 'New Tag', message = "Tag added!")
 
 # SHOW
 # GET '/tags/<id>
