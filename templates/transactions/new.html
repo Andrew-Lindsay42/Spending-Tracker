@@ -13,7 +13,7 @@
         <input type="number" name="amount" id="amount" placeholder = "Amount" step="0.01" required>
         <br>
         <label for="description">Description:</label>
-        <input type="text" name="description" id="description" placeholder = "Description">
+        <textarea id="description" name="description" placeholder="Enter description for transaction (Optional)"></textarea>
         <br>
         <label for="merchant">Merchant:</label>
         <select id="merchant" name="merchant_id">
@@ -26,6 +26,7 @@
             </option>
         {% endfor %}
         </select>
+        <br>
         <label for="tag">Tag:</label>
         <select id="tag" name="tag_id">
             <option value="no tag" selected = "selected">
@@ -37,7 +38,7 @@
             </option>
         {% endfor %}
         </select>
-
+        <br>
         <button type="submit">Create Transaction</button>
     </form>
 </div>
