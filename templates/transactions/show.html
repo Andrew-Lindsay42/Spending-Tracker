@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Spending tracker</h1>
-<h2>Transaction info</h2>
+<header class="header"><h1>Spending tracker - Transaction from {{transaction.date}}</h1></header> 
 <br>This will be the individual transaction page. It ultimately may not actually be used, but it might be useful for somewhere to display the description of a transaction.
 <a href = "/transactions">Back to mainpage</a>
 <table class="transaction_table">

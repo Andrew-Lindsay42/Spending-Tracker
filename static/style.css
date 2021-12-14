@@ -1,7 +1,8 @@
-body {
+html {
 font-family: Verdana, Geneva, Tahoma, sans-serif
 }
 
+/* Styling for sidebar in here */
 .sidebar {
     height: 100%;
     width: 12vw;
@@ -12,28 +13,60 @@ font-family: Verdana, Geneva, Tahoma, sans-serif
     top: 0;
     left: 0;
     overflow-x: hidden;
-    border-right: 0.1vw solid black;
+    border: 1px solid red;
 } 
 
 .budget_remain {
     border: 1px solid red;
 }
+
+.till_payday {
+    border: 1px solid red;
+}
+
 .sidenav {
     border: 1px solid red;
 }
-.sidenav a {
-    padding: 0.5vw;
-    text-decoration: none;
-    font-size: 1.5em;
-    color: black;
-    display: block;
+/* ------------------------- */
+
+/* Styling for main content in here */
+.header {
+    border: 1px solid red;
 }
 
-
-.main {
+.main { 
     margin-left: 13vw;
 }
 
 .transaction_table {
     border: 1px solid red;
 }
+
+.table_header {
+    border: 1px solid red;
+}
+
+.table_row {
+    border: 1px solid red;
+}
+
+.m_t_table {
+    border: 1px solid red;
+}
+
+.active_row {
+    border: 1px solid red;
+}
+
+.inactive_row {
+    border: 1px solid red;
+}
+
+.edit_form {
+    border: 1px solid red;
+}
+
+.new_form {
+    border: 1px solid red;
+}
+/* ------------------------- */
