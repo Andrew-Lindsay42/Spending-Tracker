@@ -22,6 +22,7 @@ background-color: var(--white);
     left: 0;
     overflow-x: hidden;
     background-color: var(--darkblue);
+    border-right: solid var(--lightblue);
 } 
 
 .insight > div {
@@ -100,13 +101,13 @@ background-color: var(--white);
     color:maroon;
 }
 
-.new_transaction {
+.new_x {
     padding-left: 2vw;
     padding-top: 2vw;
     
 }
 
-.new_transaction a {
+.new_x a {
     border: solid var(--darkblue);
     border-radius: 5px;
     padding: 0.5vw;
@@ -117,7 +118,27 @@ background-color: var(--white);
     background-color: var(--midblue);
 }
 
-.new_transaction a:hover {
+.new_x a:hover {
+    color: var(--lightblue)
+}
+
+.edit_x {
+    padding-left: 27vw;
+    padding-top: 2vw;
+}
+
+.edit_x a {
+    border: solid var(--darkblue);
+    border-radius: 5px;
+    padding: 0.5vw;
+    font-size: 3vh;
+    text-align: center;
+    text-decoration: none;
+    color: var(--white);
+    background-color: var(--midblue);
+}
+
+.edit_x a:hover {
     color: var(--lightblue)
 }
 
@@ -128,6 +149,9 @@ background-color: var(--white);
     margin-left: 2vw;
     margin-top: 2vw;
     font-size: larger;
+}
+.transaction_table a {
+    text-decoration: none;
 }
 .transaction_table tr td {
     width: 10vw;
@@ -167,6 +191,11 @@ background-color: var(--white);
 .m_t_table tr td {
     width: 10vw;
 }
+
+.m_t_table tr td:first-child{
+    width: 15vw;
+}
+
 .m_t_table tr td:nth-last-child(2){
     width:auto;
 }

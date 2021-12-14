@@ -2,8 +2,6 @@
 {% block content %}
 <header class="header"><h1>Spending tracker - New Tag</h1></header>
 <div class = "main">
-<br>This will be the new tag page. There will be a form with the info to be filled out, and a button to click to save.
-<br><a href = "/tags">Back to Tags</a><br>
 
 <div class = "new_form">
     <form action='/tags/new' method="post">
@@ -17,6 +15,9 @@
 
         <button type="submit">Create tag</button>
     </form>
+</div>
+<div class='edit_x'>
+    <a href = "/tags">Back to Tags</a>
 </div>
 </div>
 {% endblock %}

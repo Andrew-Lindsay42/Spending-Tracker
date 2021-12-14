@@ -2,8 +2,6 @@
 {% block content %}
 <header class="header"><h1>Spending tracker - Edit Tags</h1></header>
 <div class = "main">
-<br>This will be the edit tag page. There will be a pre populated form with the existing info, and a button to click to save.
-<br><a href = "/tags">Back to Tags</a><br>
 
 <div class = "edit_form">
     <form action='/tags/{{tag.id}}/edit' method="post">
@@ -24,6 +22,9 @@
         <input type="hidden" name="status" id="status" value="{{tag.active}}">
         <button type="submit">Update tag</button>
     </form>
+</div>
+<div class='edit_x'>
+    <a href = "/tags">Back to Tags</a>
 </div>
 </div>
 {% endblock %}
