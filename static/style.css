@@ -5,7 +5,48 @@
     --darkblue: #31708E;
   }
 
+.heading {
+    margin-left: 33.5vw;
+}  
+.homepage {
+    border: solid var(--darkblue);
+    background-color: var(--lightblue);
+    display: flexbox;
+    justify-content: space-around;
+    flex-direction: column;
+    text-align: center;
+    border: solid var(--darkblue);
+    border-radius: 5px;
+    margin-left: 28vw;
+    padding: 4vw;
+    width: 26vw;
+}
 
+.quote {
+    color: darkgrey;
+    margin-left: 20vw;
+    font-size: x-large;
+}
+
+.homepage_buttons {
+    padding: 2vw;
+    margin-top: 1vw;
+}
+
+.button a {
+    border: solid var(--darkblue);
+    border-radius: 5px;
+    padding: 0.5vw;
+    font-size: 4vh;
+    text-align: center;
+    text-decoration: none;
+    color: var(--white);
+    background-color: var(--midblue);
+}
+
+.button a:hover {
+    color: var(--lightblue)
+}
 
 @keyframes fadeOut {
     from {
@@ -159,7 +200,7 @@ background-color: var(--white);
     color:darkred;
     font-size: x-large;
     animation: 4s fadeOut forwards;
-    width: 15vw;
+    width: 20vw;
     text-align: center;
 }
 
