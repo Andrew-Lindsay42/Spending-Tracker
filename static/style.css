@@ -31,11 +31,19 @@ font-family: Verdana, Geneva, Tahoma, sans-serif
 
 /* Styling for main content in here */
 .header {
+    height: 7vw;
+    width: 100%;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    padding-left: 9vw;
     border: 1px solid red;
 }
 
 .main { 
     margin-left: 13vw;
+    margin-top: 7vw;
 }
 
 .transaction_table {
