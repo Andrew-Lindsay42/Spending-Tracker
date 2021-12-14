@@ -38,6 +38,18 @@ background-color: var(--white);
     display: flex;
     flex-direction: column;
 }
+
+.sidenav a {
+    text-decoration: none;
+    color: var(--white);
+    font-size: 3vh;
+    text-align: left;
+    padding-top: 1vw;
+}
+
+.sidenav a:hover {
+    color: var(--lightblue);
+}
 /* ------------------------- */
 
 /* Styling for main content in here */
