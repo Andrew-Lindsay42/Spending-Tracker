@@ -11,7 +11,8 @@ users_blueprint = Blueprint('users', __name__)
 def edit_user_budget():
     user = user_repo.select_all()[0]
     till_payday = user_repo.get_days_till_payday(user.id)
-    return render_template('users/edit.html', user = user, title = 'Budget', days_till_payday = till_payday)
+    remaining_budget = user_repo.get_remaining_budget(user.id)
+    return render_template('users/edit.html', user = user, title = 'Budget', days_till_payday = till_payday, remaining_budget = remaining_budget)
 
 # UPDATE
 # PUT '/budget_info
