@@ -1,5 +1,14 @@
+:root {
+    --white: #f7f9fb;
+    --lightblue: #8fc1e3;
+    --midblue: #5085A5;
+    --darkblue: #31708E;
+    --olive: #687864;
+  }
+
 html {
-font-family: Verdana, Geneva, Tahoma, sans-serif
+font-family: Verdana, Geneva, Tahoma, sans-serif;
+background-color: var(--white);
 }
 
 /* Styling for sidebar in here */
@@ -38,6 +47,7 @@ font-family: Verdana, Geneva, Tahoma, sans-serif
     top: 0;
     left: 0;
     padding-left: 9vw;
+    background-color: var(--olive);
     border: 1px solid red;
 }
 
@@ -49,25 +59,52 @@ font-family: Verdana, Geneva, Tahoma, sans-serif
 .transaction_table {
     border: 1px solid red;
     border-collapse: collapse;
-    table-layout: fixed;
-    width: 75%;
     padding: 1vw;
+    margin-left: 1vw;
+}
+.transaction_table tr td {
+    width: 10vw;
+}
+.transaction_table tr td:nth-last-child(2){
+    width:auto;
+}
+.transaction_table tr td:last-child {
+    width: auto;
+}
+#description_row {
+    width: auto
+}
+
+#edit {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    color: var(--white)
+}
+#delete {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    color:maroon;
 }
 
 .table_header {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid var(--olive);
 } 
 
 .table_row {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid var(--olive);
     text-align: center;
     padding: 0.5vw;
 }
-.table_row:hover {
-    background-color: lightsteelblue;
+.table_row:nth-child(even) {
+    background-color: var(--lightblue);
 }
 .table_row:nth-child(odd) {
-    background-color: lightslategray;
+    background-color: var(--midblue);
+}
+.table_row:hover {
+    background-color: var(--darkblue);
 }
 
 .m_t_table {

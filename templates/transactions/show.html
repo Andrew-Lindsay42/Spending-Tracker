@@ -6,25 +6,25 @@
 <a href = "/transactions">Back to mainpage</a>
 <table class="transaction_table">
     <tr class="table_header">
-      <th>Date</th>
-      <th>Amount</th>
-      <th>Description</th>
-      <th>Merchant</th>
-      <th>Tag</th>
+        <th><i class="far fa-calendar-alt"></i></th>
+        <th><i class="fas fa-pound-sign"></i></th>
+        <th><i class="far fa-sticky-note"></i></th>
+        <th><i class="fas fa-cash-register"></i></th>
+        <th><i class="fas fa-tags"></i></th>
       <th></th>
       <th></th>
     </tr>
     <tr class="table_row">
         <td>{{transaction.date}}</td>
         <td>{{transaction.amount}}</td>
-        <td>{{transaction.description}}</td>
+        <td id = 'description_row'>{{transaction.description}}</td>
         <td>{{transaction.merchant.name}}</td>
         <td>{{transaction.tag.name}}</td>
         <td><form action="/transactions/{{transaction.id}}/edit">
-            <button><i class="far fa-edit"></i></button></td>
+            <button id='edit'><i class="far fa-edit"></i></button></td>
             </form>
         <td><form action="/transactions/{{transaction.id}}/delete" method = "post">
-            <button><i class="far fa-trash-alt"></i></button>
+            <button id='delete'><i class="far fa-trash-alt"></i></button>
             </form>
         </td>
     </tr>
