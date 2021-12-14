@@ -22,7 +22,7 @@ background-color: var(--white);
     top: 0;
     left: 0;
     overflow-x: hidden;
-    border: 1px solid red;
+    background-color: var(--darkblue);
 } 
 
 .budget_remain {
@@ -47,8 +47,8 @@ background-color: var(--white);
     top: 0;
     left: 0;
     padding-left: 9vw;
-    background-color: var(--olive);
-    border: 1px solid red;
+    background-color: var(--darkblue);
+    border-bottom: solid var(--lightblue);
 }
 
 .main { 
@@ -57,10 +57,12 @@ background-color: var(--white);
 }
 
 .transaction_table {
-    border: 1px solid red;
+    border: solid var(--darkblue);
     border-collapse: collapse;
-    padding: 1vw;
-    margin-left: 1vw;
+    padding: 2vw;
+    margin-left: 2vw;
+    margin-top: 2vw;
+    font-size: larger;
 }
 .transaction_table tr td {
     width: 10vw;
@@ -121,32 +123,78 @@ background-color: var(--white);
 }
 
 .edit_form {
-    border: 1px solid red;
-}
-
-.new_form {
     display: flexbox;
+    justify-content: space-around;
     text-align: center;
     border: 0.5vw solid var(--darkblue) ;
     border-radius: 1%;
     margin-left: 27vw;
-    padding: 2%;
+    padding: 1%;
     width: 26vw
 }
-
-.new_form input, textarea, select{
-    background-color: #ffffff;
-    border: 1px solid #e5e5e4;
+.edit_form input, textarea, select{
+    background-color: var(--white);
+    border: 1px solid var(--darkblue);
+    height: auto;
+    padding-bottom: 2vw;
     font-size: 16px;
     height: auto;
-    margin: 0;
-    outline: 0;
+    width: 100%;
+    color: var(--darkblue);
+}
+.edit_form label{
+    display: block;
+    text-align: left;
+    padding: 1vw;
+}
+.edit_form button{
+    margin-top: 1vw;
+    background-color: var(--lightblue);
+    border: 1px solid var(--darkblue);
+    border-radius: 5px;
+    height: auto;
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+    width: 50%;
+    text-align: center;
+    color: var(--darkblue);
+}
+
+.new_form {
+    display: flexbox;
+    justify-content: space-around;
+    text-align: center;
+    border: 0.5vw solid var(--darkblue) ;
+    border-radius: 1%;
+    margin-left: 27vw;
+    padding: 1%;
+    width: 26vw
+}
+.new_form input, textarea, select{
+    background-color: var(--white);
+    border: 1px solid var(--darkblue);
+    height: auto;
     padding-bottom: 2vw;
+    font-size: 16px;
     height: auto;
     width: 100%;
-    color: #8a97a0;
+    color: var(--darkblue);
 }
 .new_form label{
     display: block;
+    text-align: left;
+    padding: 1vw;
+}
+.new_form button{
+    margin-top: 1vw;
+    background-color: var(--lightblue);
+    border: 1px solid var(--darkblue);
+    border-radius: 5px;
+    height: auto;
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+    width: 50%;
+    text-align: center;
+    color: var(--darkblue);
 }
 /* ------------------------- */
