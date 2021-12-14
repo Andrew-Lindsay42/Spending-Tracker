@@ -1,3 +1,4 @@
+import datetime
 from db.run_sql import run_sql
 from models.merchant import Merchant
 from models.tag import Tag
@@ -44,7 +45,20 @@ def select(id):
     if result is not None:
         merchant = merchant_repo.select(result['merchant'])
         tag = tag_repo.select(result['tag'])
-        transaction = Transaction(float(result['amount']), result['transaction_date'], result['description'], merchant, tag, result['id'])
+        transaction = Transaction(result['amount'], result['transaction_date'], result['description'], merchant, tag, result['id'])
+    return transaction
+
+def select_for_display(id):
+    transaction = None
+    sql = 'SELECT * FROM transactions WHERE id = %s'
+    values = [id]
+    result = run_sql(sql, values)[0]
+    
+    if result is not None:
+        merchant = merchant_repo.select(result['merchant'])
+        tag = tag_repo.select(result['tag'])
+        transaction = Transaction(result['amount'], datetime.datetime.strftime(result['transaction_date'], '%d %b %Y'), result['description'], merchant, tag, result['id'])
+        transaction.update_amount('{:.2f}'.format(transaction.amount))
     return transaction
 
 def delete_all():
@@ -79,8 +93,8 @@ def get_last_day():
     for row in result:
         merchant = merchant_repo.select(row['merchant'])
         tag = tag_repo.select(row['tag'])
-        transaction = Transaction(float(row['amount']), row['transaction_date'], row['description'], merchant, tag, row['id'])
-        transaction.amount = ('{:.2f}'.format(transaction.amount))
+        transaction = Transaction(row['amount'], datetime.datetime.strftime(row['transaction_date'], '%d %b %Y'), row['description'], merchant, tag, row['id'])
+        transaction.update_amount('{:.2f}'.format(transaction.amount))
         transaction_list.append(transaction)
     transaction_list.sort(key= lambda transaction : transaction.date)
     return transaction_list
@@ -93,8 +107,8 @@ def get_last_week():
     for row in result:
         merchant = merchant_repo.select(row['merchant'])
         tag = tag_repo.select(row['tag'])
-        transaction = Transaction(float(row['amount']), row['transaction_date'], row['description'], merchant, tag, row['id'])
-        transaction.amount = ('{:.2f}'.format(transaction.amount))
+        transaction = Transaction(row['amount'], datetime.datetime.strftime(row['transaction_date'], '%d %b %Y'), row['description'], merchant, tag, row['id'])
+        transaction.update_amount('{:.2f}'.format(transaction.amount))
         transaction_list.append(transaction)
     transaction_list.sort(key= lambda transaction : transaction.date)
     return transaction_list
@@ -107,8 +121,8 @@ def get_last_month():
     for row in result:
         merchant = merchant_repo.select(row['merchant'])
         tag = tag_repo.select(row['tag'])
-        transaction = Transaction(float(row['amount']), row['transaction_date'], row['description'], merchant, tag, row['id'])
-        transaction.amount = ('{:.2f}'.format(transaction.amount))
+        transaction = Transaction(row['amount'], datetime.datetime.strftime(row['transaction_date'], '%d %b %Y'), row['description'], merchant, tag, row['id'])
+        transaction.update_amount('{:.2f}'.format(transaction.amount))
         transaction_list.append(transaction)
     transaction_list.sort(key= lambda transaction : transaction.date)
     return transaction_list
@@ -122,8 +136,8 @@ def get_custom_date(start_date, end_date):
     for row in result:
         merchant = merchant_repo.select(row['merchant'])
         tag = tag_repo.select(row['tag'])
-        transaction = Transaction(float(row['amount']), row['transaction_date'], row['description'], merchant, tag, row['id'])
-        transaction.amount = ('{:.2f}'.format(transaction.amount))
+        transaction = Transaction(row['amount'], datetime.datetime.strftime(row['transaction_date'], '%d %b %Y'), row['description'], merchant, tag, row['id'])
+        transaction.update_amount('{:.2f}'.format(transaction.amount))
         transaction_list.append(transaction)
     transaction_list.sort(key= lambda transaction : transaction.date)
     return transaction_list

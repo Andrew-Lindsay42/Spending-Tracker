@@ -48,8 +48,7 @@ def create_transaction():
 # GET '/transactions/<id>
 @transactions_blueprint.route('/transactions/<int:id>')
 def show_transaction(id):
-    transaction = transaction_repo.select(id)
-    transaction.amount = ('{:.2f}'.format(transaction.amount))
+    transaction = transaction_repo.select_for_display(id)
     return render_template('transactions/show.html', transaction = transaction, title = 'Detailed View')
 
 # EDIT
