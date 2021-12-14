@@ -1,7 +1,7 @@
 :root {
     --white: #f7f9fb;
     --lightblue: #8fc1e3;
-    --midblue: #5085A5;
+    --midblue: #64a3ca;
     --darkblue: #31708E;
     --olive: #687864;
   }
@@ -34,7 +34,9 @@ background-color: var(--white);
 }
 
 .sidenav {
-    border: 1px solid red;
+    padding: 1vw;
+    display: flex;
+    flex-direction: column;
 }
 /* ------------------------- */
 
@@ -47,6 +49,7 @@ background-color: var(--white);
     top: 0;
     left: 0;
     padding-left: 9vw;
+    color: var(--white);
     background-color: var(--darkblue);
     border-bottom: solid var(--lightblue);
 }
@@ -54,6 +57,19 @@ background-color: var(--white);
 .main { 
     margin-left: 13vw;
     margin-top: 7vw;
+}
+
+#edit {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    color: green
+}
+#delete {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    color:maroon;
 }
 
 .transaction_table {
@@ -77,25 +93,7 @@ background-color: var(--white);
     width: auto
 }
 
-#edit {
-    background-color: transparent;
-    outline: none;
-    border: none;
-    color: var(--white)
-}
-#delete {
-    background-color: transparent;
-    outline: none;
-    border: none;
-    color:maroon;
-}
-
-.table_header {
-    border-bottom: 1px solid var(--olive);
-} 
-
 .table_row {
-    border-bottom: 1px solid var(--olive);
     text-align: center;
     padding: 0.5vw;
 }
@@ -106,20 +104,52 @@ background-color: var(--white);
     background-color: var(--midblue);
 }
 .table_row:hover {
-    background-color: var(--darkblue);
+    background-color: lightblue;
 }
 
 .m_t_table {
-    border: 1px solid red;
-    table-layout: fixed;
+    border: solid var(--darkblue);
+    border-collapse: collapse;
+    padding: 2vw;
+    margin-left: 2vw;
+    margin-top: 2vw;
+    font-size: larger;
+}
+.m_t_table tr td {
+    width: 10vw;
+}
+.m_t_table tr td:nth-last-child(2){
+    width:auto;
+}
+.m_t_table tr td:last-child {
+    width: auto;
 }
 
-.active_row {
-    border: 1px solid red;
+.active_row:nth-child(even) {
+    text-align: center;
+    padding: 0.5vw;
+    background-color: var(--lightblue);
+}
+.active_row:nth-child(odd) {
+    text-align: center;
+    padding: 0.5vw;
+    background-color: var(--midblue);
+}
+.active_row:hover {
+    text-align: center;
+    padding: 0.5vw;
+    background-color: lightblue;
 }
 
-.inactive_row {
-    border: 1px solid red;
+.inactive_row:nth-child(even) {
+    text-align: center;
+    padding: 0.5vw;
+    background-color: lightgray;
+}
+.inactive_row:nth-child(odd) {
+    text-align: center;
+    padding: 0.5vw;
+    background-color: rgb(182, 182, 182);
 }
 
 .edit_form {
@@ -141,6 +171,9 @@ background-color: var(--white);
     height: auto;
     width: 100%;
     color: var(--darkblue);
+}
+.edit_form input:focus, textarea:focus, select:focus{
+    border-color: var(--darkblue);
 }
 .edit_form label{
     display: block;
