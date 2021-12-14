@@ -1,11 +1,22 @@
-{% extends "base.html" %}
-{% block content %}
-<h1>Spending tracker</h1>
-<br>This will be the home page. There will be two buttons linking to <a href = "/transactions">transaction history</a>, and one to <a href = "/budget_info">budget.</a>
-<br><blockquote>
-    "Mo' Money, Mo' Problems" - <cite> The Notorious B.I.G, 1997</cite>
-    </blockquote>
-
-
-
-    {% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href={{url_for('static', filename='favicon.png')}}>
+    <script src="https://kit.fontawesome.com/e7f2007bab.js" crossorigin="anonymous"></script>
+    <link rel='stylesheet' href={{url_for('static', filename='/style.css')}}>
+    <title>{{title}}</title>
+</head>
+<body>
+    <div class="homepage">
+        <h1>Spending tracker</h1>
+        <br>This will be the home page. There will be two buttons linking to <a href = "/transactions">transaction history</a>, and one to <a href = "/budget_info">budget.</a>
+        <br>
+        <blockquote>
+            "Mo' Money, Mo' Problems" - <cite> The Notorious B.I.G, 1997</cite>
+        </blockquote>
+    </div>
+</body>
+</html>

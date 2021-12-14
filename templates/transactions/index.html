@@ -9,7 +9,7 @@
 <a href = "/transactions/new">New Transaction</a><br><br>
 
 <table class="transaction_table">
-  <tr class="transaction_table_header">
+  <tr class="table_header">
     <th><i class="far fa-calendar-alt"></i></th>
     <th><i class="fas fa-pound-sign"></i></th>
     <th><i class="fas fa-cash-register"></i></th>
@@ -18,7 +18,7 @@
     <th></th>
   </tr>
 {% for transaction in transactions %}
-    <tr class="transaction_row">
+    <tr class="table_row">
         <td>{{transaction.date}}</td>
         <td><a href="/transactions/{{transaction.id}}">{{transaction.amount}}</a></td>
         <td>{{transaction.merchant.name}}</td>

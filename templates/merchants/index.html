@@ -8,8 +8,8 @@
 <a href = "/transactions">Transactions</a><br>
 <a href = "/merchants/new">New Merchant</a><br><br>
 
-<table class="merchants_table">
-    <tr class="merchants_table_header">
+<table class="m/t_table">
+    <tr class="table_header">
       <th>Name</th>
       <th>Icon</th>
       <th>Active</th>
@@ -17,7 +17,7 @@
       <th></th>
     </tr>
   {% for merchant in active_merchants %}
-      <tr class="active_merchant_row">
+      <tr class="active_row">
           <td>{{merchant.name}}</td>
           <td>{{merchant.icon_num}}</td>
           <td>{{merchant.active}}</td>
@@ -31,7 +31,7 @@
       </tr>
   {% endfor %}
   {% for merchant in inactive_merchants %}
-      <tr class="inactive_merchant_row">
+      <tr class="inactive_row">
           <td>{{merchant.name}}</td>
           <td>{{merchant.icon_num}}</td>
           <td>{{merchant.active}}</td>

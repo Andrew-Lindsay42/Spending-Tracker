@@ -4,7 +4,7 @@
 <h2>New Transaction</h2>
 <br>This will be the new transaction page. There will be a form with the info to be filled out, and a button to click to save.
 <a href = "/transactions">Back to mainpage</a>
-<div id = "form">
+<div class = "new_form">
     <form action='/transactions/new' method="post">
         <label for="date">Date:</label>
         <input type="date" name="date" id="date" value = "{{today}}" required>

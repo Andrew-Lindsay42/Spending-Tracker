@@ -1,0 +1,39 @@
+body {
+font-family: Verdana, Geneva, Tahoma, sans-serif
+}
+
+.sidebar {
+    height: 100%;
+    width: 12vw;
+    padding-top: 12vw;
+    padding-left: 1vw;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    border-right: 0.1vw solid black;
+} 
+
+.budget_remain {
+    border: 1px solid red;
+}
+.sidenav {
+    border: 1px solid red;
+}
+.sidenav a {
+    padding: 0.5vw;
+    text-decoration: none;
+    font-size: 1.5em;
+    color: black;
+    display: block;
+}
+
+
+.main {
+    margin-left: 13vw;
+}
+
+.transaction_table {
+    border: 1px solid red;
+}

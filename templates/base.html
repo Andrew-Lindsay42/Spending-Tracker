@@ -10,10 +10,21 @@
     <title>{{title}}</title>
 </head>
 <body>
-    <div class="container">
+    <div class="main">
         {% block content %}
         
         {% endblock %}
     </div>
+    
+    <aside class="sidebar">
+        <div class="budget_remain">
+            Budget remaining:
+        </div>
+        <div class="sidenav">
+        <a href = "/budget_info">Budget</a>
+        <a href = "/merchants">Merchants</a>
+        <a href = "/tags">Tags</a>
+        </div>
+    </aside>
 </body>
 </html>
