@@ -3,12 +3,6 @@
 <header class="header"><h1>Spending tracker - All Transactions</h1></header> 
 
 <div class = "main">
-<br>This will be the transactions page, also the main page of the app. There will be a table with all the transaction details in, including merchant and tag info. <br><br>
-<a href = "/budget_info">Budget</a>
-<a href = "/merchants">Merchants</a>
-<a href = "/tags">Tags</a>
-<a href = "/transactions/new">New Transaction</a><br><br>
-
 
 <table class="transaction_table">
   <tr class="table_header">
@@ -35,5 +29,9 @@
     </tr>
 {% endfor %}
 </table>
+
+<div class='new_transaction'>
+<a href = "/transactions/new">New Transaction</a>
+</div>
 </div>
 {% endblock %}

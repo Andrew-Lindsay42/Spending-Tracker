@@ -3,7 +3,6 @@
     --lightblue: #8fc1e3;
     --midblue: #64a3ca;
     --darkblue: #31708E;
-    --olive: #687864;
   }
 
 html {
@@ -32,13 +31,13 @@ background-color: var(--white);
 .budget {
     padding: 1vw 1vw 1vw 0vw;
     text-align: center;
-    font-size: xx-large;
+    font-size: 2vw;
 }
 
 .days_till_payday {
     padding: 1vw 1vw 1vw 0vw;
     text-align: center;
-    font-size: xx-large;
+    font-size: 2vw;
 }
 
 .till_payday {
@@ -85,7 +84,7 @@ background-color: var(--white);
 
 .main { 
     margin-left: 13vw;
-    margin-top: 7vw;
+    margin-top: 10vw;
 }
 
 #edit {
@@ -99,6 +98,27 @@ background-color: var(--white);
     outline: none;
     border: none;
     color:maroon;
+}
+
+.new_transaction {
+    padding-left: 2vw;
+    padding-top: 2vw;
+    
+}
+
+.new_transaction a {
+    border: solid var(--darkblue);
+    border-radius: 5px;
+    padding: 0.5vw;
+    font-size: 3vh;
+    text-align: center;
+    text-decoration: none;
+    color: var(--white);
+    background-color: var(--midblue);
+}
+
+.new_transaction a:hover {
+    color: var(--lightblue)
 }
 
 .transaction_table {

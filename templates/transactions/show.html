@@ -2,13 +2,10 @@
 {% block content %}
 <header class="header"><h1>Spending tracker - Transaction from {{transaction.date}}</h1></header> 
 <div class = "main">
-<br>This will be the individual transaction page. It ultimately may not actually be used, but it might be useful for somewhere to display the description of a transaction.
-<a href = "/transactions">Back to mainpage</a>
 <table class="transaction_table">
     <tr class="table_header">
         <th><i class="far fa-calendar-alt"></i></th>
         <th><i class="fas fa-pound-sign"></i></th>
-        <th><i class="far fa-sticky-note"></i></th>
         <th><i class="fas fa-cash-register"></i></th>
         <th><i class="fas fa-tags"></i></th>
       <th></th>
@@ -17,7 +14,6 @@
     <tr class="table_row">
         <td>{{transaction.date}}</td>
         <td>{{transaction.amount}}</td>
-        <td id = 'description_row'>{{transaction.description}}</td>
         <td>{{transaction.merchant.name}}</td>
         <td>{{transaction.tag.name}}</td>
         <td><form action="/transactions/{{transaction.id}}/edit">
@@ -29,5 +25,9 @@
         </td>
     </tr>
 </table>
+
+<i class="far fa-sticky-note"></i>
+<p>{{transaction.description}}</p>
+
 </div>
 {% endblock %}
