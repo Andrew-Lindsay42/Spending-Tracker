@@ -1,5 +1,8 @@
 from db.run_sql import run_sql
 from models.user import User
+import calendar
+import datetime
+import dateutil
 
 def save(user):
     sql = "INSERT INTO users (name, budget, payday) VALUES (%s, %s, %s) RETURNING *"
@@ -42,3 +45,28 @@ def update(user):
     sql = "UPDATE users SET (name, budget, payday) = (%s, %s, %s) WHERE id = %s"
     values = [user.name, user.budget, user.payday, user.id]
     run_sql(sql, values)
+
+def get_days_till_payday(id):
+
+    sql = 'SELECT * FROM users WHERE id = %s'
+    values = [id]
+    result = run_sql(sql, values)[0]
+    
+    if result is not None:
+        payday = int(result['payday'])
+        year = datetime.datetime.today().year
+        month = datetime.datetime.today().month
+        today = datetime.datetime.today().day
+
+        days_in_month = calendar.monthrange(year, month)[1]
+        
+        if payday > days_in_month:
+            payday = days_in_month
+
+        days_to_go = payday - today
+
+        if days_to_go < 0:
+            days_to_go = (days_in_month - today) + payday
+        return days_to_go
+
+    return 0
