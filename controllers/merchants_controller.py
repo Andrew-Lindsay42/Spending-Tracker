@@ -14,7 +14,8 @@ def merchants():
     inactive_merchants = merchant_repo.get_inactive()
     user = user_repo.select_all()[0]
     till_payday = user_repo.get_days_till_payday(user.id)
-    return render_template('merchants/index.html', active_merchants = active_merchants, inactive_merchants = inactive_merchants, title = 'All Merchants', days_till_payday = till_payday)
+    remaining_budget = user_repo.get_remaining_budget(user.id)
+    return render_template('merchants/index.html', active_merchants = active_merchants, inactive_merchants = inactive_merchants, title = 'All Merchants', days_till_payday = till_payday, remaining_budget = remaining_budget)
 
 # SHOW
 # GET '/merchants/new'
@@ -22,7 +23,8 @@ def merchants():
 def new_merchant():
     user = user_repo.select_all()[0]
     till_payday = user_repo.get_days_till_payday(user.id)
-    return render_template('merchants/new.html', title = 'New Merchant', days_till_payday = till_payday)
+    remaining_budget = user_repo.get_remaining_budget(user.id)
+    return render_template('merchants/new.html', title = 'New Merchant', days_till_payday = till_payday, remaining_budget = remaining_budget)
 
 # CREATE
 # POST '/merchants'
@@ -34,7 +36,8 @@ def create_merchant():
     merchant_repo.save(new_merchant)
     user = user_repo.select_all()[0]
     till_payday = user_repo.get_days_till_payday(user.id)
-    return render_template('merchants/new.html', title = 'New Merchant', message = "Merchant added!", days_till_payday = till_payday)
+    remaining_budget = user_repo.get_remaining_budget(user.id)
+    return render_template('merchants/new.html', title = 'New Merchant', message = "Merchant added!", days_till_payday = till_payday, remaining_budget = remaining_budget)
 
 # SHOW
 # GET '/merchants/<id>
@@ -49,7 +52,8 @@ def edit_merchant(id):
     merchant = merchant_repo.select(id)
     user = user_repo.select_all()[0]
     till_payday = user_repo.get_days_till_payday(user.id)
-    return render_template('merchants/edit.html', merchant = merchant, title = 'Edit Merchant', days_till_payday = till_payday)
+    remaining_budget = user_repo.get_remaining_budget(user.id)
+    return render_template('merchants/edit.html', merchant = merchant, title = 'Edit Merchant', days_till_payday = till_payday, remaining_budget = remaining_budget)
 
 # UPDATE
 # PUT '/merchants/<id>

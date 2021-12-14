@@ -24,7 +24,8 @@ def update_user_budget():
     updated_user = User(user.name, budget, payday, user.id)
     user_repo.update(updated_user)
     till_payday = user_repo.get_days_till_payday(user.id)
-    return render_template('users/edit.html', user = updated_user, title = 'Budget', message = 'Budget updated!', days_till_payday = till_payday)
+    remaining_budget = user_repo.get_remaining_budget(user.id)
+    return render_template('users/edit.html', user = updated_user, title = 'Budget', message = 'Budget updated!', days_till_payday = till_payday, remaining_budget = remaining_budget)
 
 
 # As having multiple users is outwith the scope of the project,

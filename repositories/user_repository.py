@@ -119,5 +119,5 @@ def get_remaining_budget(id):
         for transaction in transaction_list:
             amount = float(transaction.amount)
             remaining_budget -= amount
-
+    remaining_budget = '{:.2f}'.format(remaining_budget)
     return remaining_budget

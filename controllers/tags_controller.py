@@ -14,7 +14,8 @@ def tags():
     inactive_tags = tag_repo.get_inactive()
     user = user_repo.select_all()[0]
     till_payday = user_repo.get_days_till_payday(user.id)
-    return render_template('tags/index.html', active_tags = active_tags, inactive_tags = inactive_tags, title = 'All Tags', days_till_payday = till_payday)
+    remaining_budget = user_repo.get_remaining_budget(user.id)
+    return render_template('tags/index.html', active_tags = active_tags, inactive_tags = inactive_tags, title = 'All Tags', days_till_payday = till_payday, remaining_budget = remaining_budget)
 
 # SHOW
 # GET '/tags/new'
@@ -22,7 +23,8 @@ def tags():
 def new_tag():
     user = user_repo.select_all()[0]
     till_payday = user_repo.get_days_till_payday(user.id)
-    return render_template('tags/new.html', title = 'New Tag', days_till_payday = till_payday)
+    remaining_budget = user_repo.get_remaining_budget(user.id)
+    return render_template('tags/new.html', title = 'New Tag', days_till_payday = till_payday, remaining_budget = remaining_budget)
 
 # CREATE
 # POST '/tags'
@@ -34,7 +36,8 @@ def create_tag():
     tag_repo.save(new_tag)
     user = user_repo.select_all()[0]
     till_payday = user_repo.get_days_till_payday(user.id)
-    return render_template('tags/new.html', title = 'New Tag', message = "Tag added!", days_till_payday = till_payday)
+    remaining_budget = user_repo.get_remaining_budget(user.id)
+    return render_template('tags/new.html', title = 'New Tag', message = "Tag added!", days_till_payday = till_payday, remaining_budget = remaining_budget)
 
 # SHOW
 # GET '/tags/<id>
@@ -49,7 +52,8 @@ def edit_tag(id):
     tag = tag_repo.select(id)
     user = user_repo.select_all()[0]
     till_payday = user_repo.get_days_till_payday(user.id)
-    return render_template('tags/edit.html', tag = tag, title = 'Edit Tag', days_till_payday = till_payday)
+    remaining_budget = user_repo.get_remaining_budget(user.id)
+    return render_template('tags/edit.html', tag = tag, title = 'Edit Tag', days_till_payday = till_payday, remaining_budget = remaining_budget)
 
 # UPDATE
 # PUT '/tags/<id>

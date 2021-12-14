@@ -16,7 +16,8 @@ def transactions():
     default_transactions_list = transaction_repo.get_last_week()
     user = user_repo.select_all()[0]
     till_payday = user_repo.get_days_till_payday(user.id)
-    return render_template('transactions/index.html', transactions = default_transactions_list, title = 'All Transactions', days_till_payday = till_payday)
+    remaining_budget = user_repo.get_remaining_budget(user.id)
+    return render_template('transactions/index.html', transactions = default_transactions_list, title = 'All Transactions', days_till_payday = till_payday, remaining_budget = remaining_budget)
 
 # SHOW
 # GET '/transactions/new'
@@ -27,7 +28,8 @@ def new_transaction():
     tags = tag_repo.get_active()
     user = user_repo.select_all()[0]
     till_payday = user_repo.get_days_till_payday(user.id)
-    return render_template('transactions/new.html', today = today, merchants = merchants, tags = tags, title = 'New Transaction', days_till_payday = till_payday)
+    remaining_budget = user_repo.get_remaining_budget(user.id)
+    return render_template('transactions/new.html', today = today, merchants = merchants, tags = tags, title = 'New Transaction', days_till_payday = till_payday, remaining_budget = remaining_budget)
 
 # CREATE
 # POST '/transactions'
@@ -52,7 +54,8 @@ def create_transaction():
     tags = tag_repo.get_active()
     user = user_repo.select_all()[0]
     till_payday = user_repo.get_days_till_payday(user.id)
-    return render_template('transactions/new.html', today = today, merchants = merchants, tags = tags, title = 'New Transaction', message = 'Transaction added!', days_till_payday = till_payday)
+    remaining_budget = user_repo.get_remaining_budget(user.id)
+    return render_template('transactions/new.html', today = today, merchants = merchants, tags = tags, title = 'New Transaction', message = 'Transaction added!', days_till_payday = till_payday, remaining_budget = remaining_budget)
 
 # SHOW
 # GET '/transactions/<id>
@@ -61,7 +64,8 @@ def show_transaction(id):
     transaction = transaction_repo.select_for_display(id)
     user = user_repo.select_all()[0]
     till_payday = user_repo.get_days_till_payday(user.id)
-    return render_template('transactions/show.html', transaction = transaction, title = 'Detailed View', days_till_payday = till_payday)
+    remaining_budget = user_repo.get_remaining_budget(user.id)
+    return render_template('transactions/show.html', transaction = transaction, title = 'Detailed View', days_till_payday = till_payday, remaining_budget = remaining_budget)
 
 # EDIT
 # GET '/transactions/<id>/edit
@@ -72,7 +76,8 @@ def edit_transaction(id):
     tags = tag_repo.get_active()
     user = user_repo.select_all()[0]
     till_payday = user_repo.get_days_till_payday(user.id)
-    return render_template('transactions/edit.html', transaction = transaction, merchants = merchants, tags = tags, title = 'Edit Transaction', days_till_payday = till_payday)
+    remaining_budget = user_repo.get_remaining_budget(user.id)
+    return render_template('transactions/edit.html', transaction = transaction, merchants = merchants, tags = tags, title = 'Edit Transaction', days_till_payday = till_payday, remaining_budget = remaining_budget)
 
 # UPDATE
 # PUT '/transactions/<id>
