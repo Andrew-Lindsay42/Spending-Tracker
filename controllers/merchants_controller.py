@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect
 from flask import Blueprint
 from models.merchant import Merchant
 from repositories import merchant_repository as merchant_repo
+from repositories import user_repository as user_repo
 
 merchants_blueprint = Blueprint('merchants', __name__)
 
@@ -11,14 +12,17 @@ merchants_blueprint = Blueprint('merchants', __name__)
 def merchants():
     active_merchants = merchant_repo.get_active()
     inactive_merchants = merchant_repo.get_inactive()
-    return render_template('merchants/index.html', active_merchants = active_merchants, inactive_merchants = inactive_merchants, title = 'All Merchants')
+    user = user_repo.select_all()[0]
+    till_payday = user_repo.get_days_till_payday(user.id)
+    return render_template('merchants/index.html', active_merchants = active_merchants, inactive_merchants = inactive_merchants, title = 'All Merchants', days_till_payday = till_payday)
 
 # SHOW
 # GET '/merchants/new'
 @merchants_blueprint.route('/merchants/new')
 def new_merchant():
-    
-    return render_template('merchants/new.html', title = 'New Merchant')
+    user = user_repo.select_all()[0]
+    till_payday = user_repo.get_days_till_payday(user.id)
+    return render_template('merchants/new.html', title = 'New Merchant', days_till_payday = till_payday)
 
 # CREATE
 # POST '/merchants'
@@ -28,7 +32,9 @@ def create_merchant():
     icon = request.form['icon']
     new_merchant = Merchant(name, True, icon)
     merchant_repo.save(new_merchant)
-    return render_template('merchants/new.html', title = 'New Merchant', message = "Merchant added!")
+    user = user_repo.select_all()[0]
+    till_payday = user_repo.get_days_till_payday(user.id)
+    return render_template('merchants/new.html', title = 'New Merchant', message = "Merchant added!", days_till_payday = till_payday)
 
 # SHOW
 # GET '/merchants/<id>
@@ -41,7 +47,9 @@ def show_merchant(id):
 @merchants_blueprint.route('/merchants/<int:id>/edit')
 def edit_merchant(id):
     merchant = merchant_repo.select(id)
-    return render_template('merchants/edit.html', merchant = merchant, title = 'Edit Merchant')
+    user = user_repo.select_all()[0]
+    till_payday = user_repo.get_days_till_payday(user.id)
+    return render_template('merchants/edit.html', merchant = merchant, title = 'Edit Merchant', days_till_payday = till_payday)
 
 # UPDATE
 # PUT '/merchants/<id>

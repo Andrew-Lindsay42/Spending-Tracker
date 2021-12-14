@@ -5,6 +5,7 @@ from models.transaction import Transaction
 from repositories import transaction_repository as transaction_repo
 from repositories import merchant_repository as merchant_repo
 from repositories import tag_repository as tag_repo
+from repositories import user_repository as user_repo
 
 transactions_blueprint = Blueprint('transactions', __name__)
 
@@ -13,7 +14,9 @@ transactions_blueprint = Blueprint('transactions', __name__)
 @transactions_blueprint.route('/transactions')
 def transactions():
     default_transactions_list = transaction_repo.get_last_week()
-    return render_template('transactions/index.html', transactions = default_transactions_list, title = 'All Transactions')
+    user = user_repo.select_all()[0]
+    till_payday = user_repo.get_days_till_payday(user.id)
+    return render_template('transactions/index.html', transactions = default_transactions_list, title = 'All Transactions', days_till_payday = till_payday)
 
 # SHOW
 # GET '/transactions/new'
@@ -22,7 +25,9 @@ def new_transaction():
     today = datetime.date.today()
     merchants = merchant_repo.get_active()
     tags = tag_repo.get_active()
-    return render_template('transactions/new.html', today = today, merchants = merchants, tags = tags, title = 'New Transaction')
+    user = user_repo.select_all()[0]
+    till_payday = user_repo.get_days_till_payday(user.id)
+    return render_template('transactions/new.html', today = today, merchants = merchants, tags = tags, title = 'New Transaction', days_till_payday = till_payday)
 
 # CREATE
 # POST '/transactions'
@@ -45,14 +50,18 @@ def create_transaction():
     today = datetime.date.today()
     merchants = merchant_repo.get_active()
     tags = tag_repo.get_active()
-    return render_template('transactions/new.html', today = today, merchants = merchants, tags = tags, title = 'New Transaction', message = 'Transaction added!')
+    user = user_repo.select_all()[0]
+    till_payday = user_repo.get_days_till_payday(user.id)
+    return render_template('transactions/new.html', today = today, merchants = merchants, tags = tags, title = 'New Transaction', message = 'Transaction added!', days_till_payday = till_payday)
 
 # SHOW
 # GET '/transactions/<id>
 @transactions_blueprint.route('/transactions/<int:id>')
 def show_transaction(id):
     transaction = transaction_repo.select_for_display(id)
-    return render_template('transactions/show.html', transaction = transaction, title = 'Detailed View')
+    user = user_repo.select_all()[0]
+    till_payday = user_repo.get_days_till_payday(user.id)
+    return render_template('transactions/show.html', transaction = transaction, title = 'Detailed View', days_till_payday = till_payday)
 
 # EDIT
 # GET '/transactions/<id>/edit
@@ -61,7 +70,9 @@ def edit_transaction(id):
     transaction = transaction_repo.select(id)
     merchants = merchant_repo.get_active()
     tags = tag_repo.get_active()
-    return render_template('transactions/edit.html', transaction = transaction, merchants = merchants, tags = tags, title = 'Edit Transaction')
+    user = user_repo.select_all()[0]
+    till_payday = user_repo.get_days_till_payday(user.id)
+    return render_template('transactions/edit.html', transaction = transaction, merchants = merchants, tags = tags, title = 'Edit Transaction', days_till_payday = till_payday)
 
 # UPDATE
 # PUT '/transactions/<id>
