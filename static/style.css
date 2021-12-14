@@ -25,14 +25,31 @@ background-color: var(--white);
     background-color: var(--darkblue);
 } 
 
-.budget_remain {
-    border: 1px solid red;
+.insight > div {
+    color: var(--white);
+}
+
+.budget {
+    padding: 1vw 1vw 1vw 0vw;
+    text-align: center;
+    font-size: xx-large;
+}
+
+.days_till_payday {
+    padding: 1vw 1vw 1vw 0vw;
+    text-align: center;
+    font-size: xx-large;
 }
 
 .till_payday {
-    border: 1px solid red;
+    padding-bottom: 1vw;
 }
 
+.insight > hr {
+    color: --white;
+    margin-right: 1vw;
+    margin-bottom: 1vw;
+}
 .sidenav {
     padding: 1vw;
     display: flex;
