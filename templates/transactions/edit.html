@@ -12,7 +12,7 @@
         <input type="number" name="amount" id="amount" value = "{{transaction.amount}}" step="0.01">
         <br>
         <label for="description">Description:</label>
-        <input type="text" name="description" id="description" value = "{{transaction.description}}">
+        <textarea id="description" name="description">{{transaction.description}}</textarea>
         <br>
         <label for="merchant">Merchant:</label>
         <select id="merchant" name="merchant_id">

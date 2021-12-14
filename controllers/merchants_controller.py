@@ -52,9 +52,13 @@ def update_merchant(id):
     if request.form['status'] == 'True':
         if 'active' in request.form:
             active = False
+        else:
+            active = True
     else:
         if 'active' in request.form:
             active = True
+        else:
+            active = False
     updated_merchant = Merchant(name, active, icon, id)
     merchant_repo.update(updated_merchant)
     return redirect('/merchants')

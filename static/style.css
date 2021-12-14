@@ -5,6 +5,21 @@
     --darkblue: #31708E;
   }
 
+#message {
+    color:darkred;
+    font-size: x-large;
+    animation: 4s fadeOut forwards;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
 html {
 font-family: Verdana, Geneva, Tahoma, sans-serif;
 background-color: var(--white);
@@ -81,6 +96,7 @@ background-color: var(--white);
     color: var(--white);
     background-color: var(--darkblue);
     border-bottom: solid var(--lightblue);
+    font-size: 1.4vw;
 }
 
 .main { 
@@ -231,65 +247,104 @@ background-color: var(--white);
 }
 
 .edit_form {
+    background-color: var(--lightblue);
     display: flexbox;
     justify-content: space-around;
     text-align: center;
-    border: 0.5vw solid var(--darkblue) ;
+    border: solid var(--darkblue);
     border-radius: 1%;
     margin-left: 27vw;
     padding: 1%;
     width: 26vw
 }
-.edit_form input, textarea, select{
+
+.edit_form input {
     background-color: var(--white);
-    border: 1px solid var(--darkblue);
-    height: auto;
-    padding-bottom: 2vw;
-    font-size: 16px;
-    height: auto;
-    width: 100%;
-    color: var(--darkblue);
+    border: solid var(--darkblue);
+    padding: 1vw;
+    font-size: 1.5vw;
+    height: 1vw;
+    width: 80%;
+    color: black;
 }
-.edit_form input:focus, textarea:focus, select:focus{
-    border-color: var(--darkblue);
+.edit_form textarea {
+    background-color: var(--white);
+    border: solid var(--darkblue);
+    padding: 0.1vw 1vw;
+    font-size: 1.5vw;
+    height: 5vw;
+    width: 80%;
+    color: black;
+    resize: none;
 }
+  
 .edit_form label{
     display: block;
     text-align: left;
     padding: 1vw;
 }
+
+.edit_form select {
+    background-color: var(--white);
+    border: solid var(--darkblue);
+    padding: 0vw 1vw;
+    font-size: 1.5vw;
+    height: 3vw;
+    width: 90%;
+    color: black;
+}
+
 .edit_form button{
-    margin-top: 1vw;
-    background-color: var(--lightblue);
-    border: 1px solid var(--darkblue);
+    background-color: var(--midblue);
+    border: solid var(--darkblue);
     border-radius: 5px;
     height: auto;
+    margin-top: 1vw;
     padding-top: 1vw;
     padding-bottom: 1vw;
-    width: 50%;
     text-align: center;
-    color: var(--darkblue);
+    color: var(--white);
+    font-size: 3vh;
 }
 
 .new_form {
+    background-color: var(--lightblue);
     display: flexbox;
     justify-content: space-around;
     text-align: center;
-    border: 0.5vw solid var(--darkblue) ;
+    border: solid var(--darkblue);
     border-radius: 1%;
     margin-left: 27vw;
     padding: 1%;
     width: 26vw
 }
-.new_form input, textarea, select{
+.new_form input {
     background-color: var(--white);
-    border: 1px solid var(--darkblue);
-    height: auto;
-    padding-bottom: 2vw;
-    font-size: 16px;
-    height: auto;
-    width: 100%;
-    color: var(--darkblue);
+    border: solid var(--darkblue);
+    padding: 1vw;
+    font-size: 1.5vw;
+    height: 1vw;
+    width: 80%;
+    color: black;
+}
+.new_form textarea {
+    background-color: var(--white);
+    border: solid var(--darkblue);
+    padding: 0.1vw 1vw;
+    font-size: 1.5vw;
+    height: 5vw;
+    width: 80%;
+    color: black;
+    resize: none;
+}
+.new_form select {
+    background-color: var(--white);
+    border: solid var(--darkblue);
+    padding: 0vw 1vw;
+    font-size: 1.5vw;
+    height: 3vw;
+    width: 90%;
+    color: black;
 }
 .new_form label{
     display: block;
@@ -298,14 +353,14 @@ background-color: var(--white);
 }
 .new_form button{
     margin-top: 1vw;
-    background-color: var(--lightblue);
-    border: 1px solid var(--darkblue);
+    background-color: var(--midblue);
+    border: solid var(--darkblue);
     border-radius: 5px;
     height: auto;
     padding-top: 1vw;
     padding-bottom: 1vw;
-    width: 50%;
     text-align: center;
-    color: var(--darkblue);
+    color: var(--white);
+    font-size: 3vh;
 }
 /* ------------------------- */

@@ -53,9 +53,13 @@ def update_tag(id):
     if request.form['status'] == 'True':
         if 'active' in request.form:
             active = False
+        else:
+            active = True
     else:
         if 'active' in request.form:
             active = True
+        else:
+            active = False
     updated_tag = Tag(name, active, icon, id)
     tag_repo.update(updated_tag)
     return redirect('/tags')
