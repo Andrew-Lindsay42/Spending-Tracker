@@ -11,14 +11,14 @@ tags_blueprint = Blueprint('tags', __name__)
 def tags():
     active_tags = tag_repo.get_active()
     inactive_tags = tag_repo.get_inactive()
-    return render_template('tags/index.html', active_tags = active_tags, inactive_tags = inactive_tags)
+    return render_template('tags/index.html', active_tags = active_tags, inactive_tags = inactive_tags, title = 'All Tags')
 
 # SHOW
 # GET '/tags/new'
 @tags_blueprint.route('/tags/new')
 def new_tag():
 
-    return render_template('tags/new.html')
+    return render_template('tags/new.html', title = 'New Tag')
 
 # CREATE
 # POST '/tags'
@@ -42,7 +42,7 @@ def show_tag(id):
 @tags_blueprint.route('/tags/<int:id>/edit')
 def edit_tag(id):
     tag = tag_repo.select(id)
-    return render_template('tags/edit.html', tag = tag)
+    return render_template('tags/edit.html', tag = tag, title = 'Edit Tag')
 
 # UPDATE
 # PUT '/tags/<id>

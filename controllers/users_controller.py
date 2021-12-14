@@ -10,7 +10,7 @@ users_blueprint = Blueprint('users', __name__)
 @users_blueprint.route('/budget_info')
 def edit_user_budget():
     user = user_repo.select_all()[0]
-    return render_template('users/edit.html', user = user)
+    return render_template('users/edit.html', user = user, title = 'Budget')
 
 # UPDATE
 # PUT '/budget_info

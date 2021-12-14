@@ -13,7 +13,7 @@ transactions_blueprint = Blueprint('transactions', __name__)
 @transactions_blueprint.route('/transactions')
 def transactions():
     default_transactions_list = transaction_repo.get_last_week()
-    return render_template('transactions/index.html', transactions = default_transactions_list)
+    return render_template('transactions/index.html', transactions = default_transactions_list, title = 'All Transactions')
 
 # SHOW
 # GET '/transactions/new'
@@ -22,7 +22,7 @@ def new_transaction():
     today = datetime.date.today()
     merchants = merchant_repo.get_active()
     tags = tag_repo.get_active()
-    return render_template('transactions/new.html', today = today, merchants = merchants, tags = tags)
+    return render_template('transactions/new.html', today = today, merchants = merchants, tags = tags, title = 'New Transaction')
 
 # CREATE
 # POST '/transactions'
@@ -50,7 +50,7 @@ def create_transaction():
 def show_transaction(id):
     transaction = transaction_repo.select(id)
     transaction.amount = ('{:.2f}'.format(transaction.amount))
-    return render_template('transactions/show.html', transaction = transaction)
+    return render_template('transactions/show.html', transaction = transaction, title = 'Detailed View')
 
 # EDIT
 # GET '/transactions/<id>/edit
@@ -59,7 +59,7 @@ def edit_transaction(id):
     transaction = transaction_repo.select(id)
     merchants = merchant_repo.get_active()
     tags = tag_repo.get_active()
-    return render_template('transactions/edit.html', transaction = transaction, merchants = merchants, tags = tags)
+    return render_template('transactions/edit.html', transaction = transaction, merchants = merchants, tags = tags, title = 'Edit Transaction')
 
 # UPDATE
 # PUT '/transactions/<id>

@@ -11,14 +11,14 @@ merchants_blueprint = Blueprint('merchants', __name__)
 def merchants():
     active_merchants = merchant_repo.get_active()
     inactive_merchants = merchant_repo.get_inactive()
-    return render_template('merchants/index.html', active_merchants = active_merchants, inactive_merchants = inactive_merchants)
+    return render_template('merchants/index.html', active_merchants = active_merchants, inactive_merchants = inactive_merchants, title = 'All Merchants')
 
 # SHOW
 # GET '/merchants/new'
 @merchants_blueprint.route('/merchants/new')
 def new_merchant():
     
-    return render_template('merchants/new.html')
+    return render_template('merchants/new.html', title = 'New Merchant')
 
 # CREATE
 # POST '/merchants'
@@ -41,7 +41,7 @@ def show_merchant(id):
 @merchants_blueprint.route('/merchants/<int:id>/edit')
 def edit_merchant(id):
     merchant = merchant_repo.select(id)
-    return render_template('merchants/edit.html', merchant = merchant)
+    return render_template('merchants/edit.html', merchant = merchant, title = 'Edit Merchant')
 
 # UPDATE
 # PUT '/merchants/<id>
