@@ -21,7 +21,9 @@ def transactions():
     last_week = today - datetime.timedelta(days=7)
     merchants = merchant_repo.select_all()
     tags = tag_repo.select_all()
-    return render_template('transactions/index.html', transactions = default_transactions_list, title = 'All Transactions', days_till_payday = till_payday, remaining_budget = remaining_budget, start_date = last_week, end_date = today, merchants = merchants, tags = tags)
+    total = transaction_repo.get_total(default_transactions_list)
+    total = '{:.2f}'.format(total)
+    return render_template('transactions/index.html', transactions = default_transactions_list, title = 'All Transactions', days_till_payday = till_payday, remaining_budget = remaining_budget, start_date = last_week, end_date = today, merchants = merchants, tags = tags, total = total)
 
 
 # GET '/transactions', but with filter applied
@@ -68,8 +70,10 @@ def filtered_transactions():
         tag_select = int(request.form['tag_id'])
 
     transactions = transaction_repo.filter_by_tag(tag, transactions)
+    total = transaction_repo.get_total(transactions)
+    total = '{:.2f}'.format(total)
     
-    return render_template('transactions/index.html', transactions = transactions, title = 'Filtered Transactions', days_till_payday = till_payday, remaining_budget = remaining_budget, start_date = start_date, end_date = end_date, merchants = merchants, tags = tags, merchant_select = merchant_select, tag_select = tag_select)
+    return render_template('transactions/index.html', transactions = transactions, title = 'Filtered Transactions', days_till_payday = till_payday, remaining_budget = remaining_budget, start_date = start_date, end_date = end_date, merchants = merchants, tags = tags, merchant_select = merchant_select, tag_select = tag_select, total = total)
 
 # SHOW
 # GET '/transactions/new'

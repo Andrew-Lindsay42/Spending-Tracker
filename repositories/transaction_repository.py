@@ -150,3 +150,9 @@ def filter_by_tag(tag, filter_list):
                 if transaction.tag is None:
                     filtered_list.append(transaction)
     return filtered_list
+
+def get_total(transaction_list):
+    total = 0
+    for transaction in transaction_list:
+        total += float(transaction.amount)
+    return total

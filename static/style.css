@@ -120,7 +120,7 @@ html {
 }
 .main { 
     margin-left: 13vw;
-    margin-top: 10vw;
+    margin-top: 9vw;
 }
 
 /* Edit/delete icon styling */
@@ -146,7 +146,7 @@ html {
 .new_x a {
     border: solid var(--darkblue);
     border-radius: 5px;
-    padding: 0.5vw;
+    padding: 1vw;
     font-size: 3vh;
     text-align: center;
     text-decoration: none;
@@ -175,6 +175,17 @@ html {
     display: flex;
     padding-left: 27vw;
     padding-top: 2vw;
+}
+/* ------------------------- */
+
+/* Styling for total */
+.transaction_info {
+    display: flex;
+}
+.total {
+    padding-left: 15vw;
+    font-size: 4vh;
+    margin-top: 0;
 }
 /* ------------------------- */
 
