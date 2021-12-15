@@ -30,7 +30,6 @@ def filtered_transactions():
     user = user_repo.select_all()[0]
     till_payday = user_repo.get_days_till_payday(user.id)
     remaining_budget = user_repo.get_remaining_budget(user.id)
-    today = datetime.date.today()
     merchants = merchant_repo.select_all()
     tags = tag_repo.select_all()
 
@@ -45,22 +44,28 @@ def filtered_transactions():
 
     if request.form['merchant_id'] == 'no merchants':
         merchant = None
+        merchant_select = 'no merchants'
     elif request.form['merchant_id'] == 'all merchants':
         merchant = 'All'
+        merchant_select = 'all merchants'
     else:
         merchant = merchant_repo.select(request.form['merchant_id'])
+        merchant_select = int(request.form['merchant_id'])
 
     if request.form['tag_id'] == 'no tags':
         tag = None
+        tag_select = 'no merchants'
     elif request.form['tag_id'] == 'all tags':
         tag = 'All'
+        tag_select = 'all tags'
     else:
         tag = tag_repo.select(request.form['tag_id'])
+        tag_select = int(request.form['tag_id'])
 
     transactions = transaction_repo.filter_by_merchant(merchant, transactions)
     transactions = transaction_repo.filter_by_tag(tag, transactions)
     
-    return render_template('transactions/index.html', transactions = transactions, title = 'Filtered Transactions', days_till_payday = till_payday, remaining_budget = remaining_budget, start_date = start_date, end_date = end_date, merchants = merchants, tags = tags)
+    return render_template('transactions/index.html', transactions = transactions, title = 'Filtered Transactions', days_till_payday = till_payday, remaining_budget = remaining_budget, start_date = start_date, end_date = end_date, merchants = merchants, tags = tags, merchant_select = merchant_select, tag_select = tag_select)
 
 # SHOW
 # GET '/transactions/new'

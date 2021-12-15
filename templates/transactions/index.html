@@ -16,11 +16,15 @@
             <option value="all merchants" selected = "selected">
                 All merchants
             </option>
-            <option value="no merchants">
+            <option value="no merchants" {% if merchant_select == 'no merchants' %}
+              selected = "selected"
+            {% endif %}>
               No merchant
           </option>
         {% for merchant in merchants %}
-            <option value="{{ merchant.id }}">
+            <option value="{{ merchant.id }}"{% if merchant_select == merchant.id %}
+            selected = "selected"
+          {% endif %}>
             {{ merchant.name }} 
             </option>
         {% endfor %}
@@ -30,11 +34,15 @@
             <option value="all tags" selected = "selected">
                 All tags
             </option>
-            <option value="no tags">
+            <option value="no tags" {% if tag_select == 'no tags' %}
+            selected = "selected"
+          {% endif %}>
               No tag
           </option>
         {% for tag in tags %}
-            <option value="{{ tag.id }}">
+            <option value="{{ tag.id }}" {% if tag_select == tag.id %}
+            selected = "selected"
+          {% endif %}>
             {{ tag.name }} 
             </option>
         {% endfor %}
