@@ -204,6 +204,18 @@ background-color: var(--white);
     text-align: center;
 }
 
+.description {
+    border: solid var(--darkblue);
+    margin-left: 2vw;
+    min-height: 4vw;
+    width: 50vw;
+    padding: 0.5vw;
+}
+.description_head {
+    margin-left: 2vw;
+    font-size: large;
+}
+
 .transaction_table {
     border: solid var(--darkblue);
     border-collapse: collapse;
