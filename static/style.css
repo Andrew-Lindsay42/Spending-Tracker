@@ -221,7 +221,7 @@ background-color: var(--white);
     border-collapse: collapse;
     padding: 2vw;
     margin-left: 2vw;
-    margin-top: 2vw;
+    margin-top: 1vw;
     font-size: larger;
 }
 .transaction_table a {
