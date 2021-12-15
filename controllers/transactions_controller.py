@@ -18,9 +18,10 @@ def transactions():
     till_payday = user_repo.get_days_till_payday(user.id)
     remaining_budget = user_repo.get_remaining_budget(user.id)
     today = datetime.date.today()
+    last_week = today - datetime.timedelta(days=7)
     merchants = merchant_repo.select_all()
     tags = tag_repo.select_all()
-    return render_template('transactions/index.html', transactions = default_transactions_list, title = 'All Transactions', days_till_payday = till_payday, remaining_budget = remaining_budget, start_date = today, end_date = today, merchants = merchants, tags = tags)
+    return render_template('transactions/index.html', transactions = default_transactions_list, title = 'All Transactions', days_till_payday = till_payday, remaining_budget = remaining_budget, start_date = last_week, end_date = today, merchants = merchants, tags = tags)
 
 
 # GET '/transactions', but with filter applied
