@@ -17,7 +17,10 @@ def transactions():
     user = user_repo.select_all()[0]
     till_payday = user_repo.get_days_till_payday(user.id)
     remaining_budget = user_repo.get_remaining_budget(user.id)
-    return render_template('transactions/index.html', transactions = default_transactions_list, title = 'All Transactions', days_till_payday = till_payday, remaining_budget = remaining_budget)
+    today = datetime.date.today()
+    merchants = merchant_repo.select_all()
+    tags = tag_repo.select_all()
+    return render_template('transactions/index.html', transactions = default_transactions_list, title = 'All Transactions', days_till_payday = till_payday, remaining_budget = remaining_budget, today = today, merchants = merchants, tags = tags)
 
 # SHOW
 # GET '/transactions/new'

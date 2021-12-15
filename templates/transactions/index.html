@@ -4,6 +4,39 @@
 
 <div class = "main">
 
+  <div class = "filter_form">
+    <form action='/transactions' method="post">
+        <label for="start_date">Start date:</label>
+        <input type="date" name="start_date" id="start_date" placeholder = "{{today}}">
+        <label for="end_date">End date:</label>
+        <input type="date" name="end_date" id="end_date" value = "{{today}}">
+        <br>
+        <label for="merchant">Merchant:</label>
+        <select id="merchant" name="merchant_id">
+            <option value="all merchants" selected = "selected">
+                All merchants
+            </option>
+        {% for merchant in merchants %}
+            <option value="{{ merchant.id }}">
+            {{ merchant.name }} 
+            </option>
+        {% endfor %}
+        </select>
+        <label for="tag">Tag:</label>
+        <select id="tag" name="tag_id">
+            <option value="all tags" selected = "selected">
+                All tags
+            </option>
+        {% for tag in tags %}
+            <option value="{{ tag.id }}">
+            {{ tag.name }} 
+            </option>
+        {% endfor %}
+        </select>
+        <button type="submit">Filter</button>
+    </form>
+</div>
+
 <table class="transaction_table">
   <tr class="table_header">
     <th><i class="far fa-calendar-alt"></i></th>
