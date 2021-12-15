@@ -2,7 +2,7 @@ from db.run_sql import run_sql
 from models.merchant import Merchant
 
 def save(merchant):
-    sql = "INSERT INTO merchants (name, active, icon_num) VALUES (%s, %s, %s) RETURNING *"
+    sql = 'INSERT INTO merchants (name, active, icon_num) VALUES (%s, %s, %s) RETURNING *'
     values = [merchant.name, merchant.active, merchant.icon_num]
     results = run_sql(sql, values)
     id = results[0]['id']
@@ -31,16 +31,16 @@ def select(id):
     return merchant
 
 def delete_all():
-    sql = "DELETE FROM merchants"
+    sql = 'DELETE FROM merchants'
     run_sql(sql)
 
 def delete(id):
-    sql = "DELETE FROM merchants WHERE id = %s"
+    sql = 'DELETE FROM merchants WHERE id = %s'
     values = [id]
     run_sql(sql, values)
 
 def update(merchant):
-    sql = "UPDATE merchants SET (name, active, icon_num) = (%s, %s, %s) WHERE id = %s"
+    sql = 'UPDATE merchants SET (name, active, icon_num) = (%s, %s, %s) WHERE id = %s'
     values = [merchant.name, merchant.active, merchant.icon_num, merchant.id]
     run_sql(sql, values)
 

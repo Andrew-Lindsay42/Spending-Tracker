@@ -1,10 +1,17 @@
+/* Colour variables for use throughtout styling */
 :root {
     --white: #f7f9fb;
     --lightblue: #8fc1e3;
     --midblue: #64a3ca;
     --darkblue: #31708E;
-  }
+}
 
+html {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: var(--white);
+}
+
+/* Styling for the homepage */
 .heading {
     margin-left: 33.5vw;
 }  
@@ -21,18 +28,15 @@
     padding: 4vw;
     width: 26vw;
 }
-
 .quote {
     color: darkgrey;
     margin-left: 20vw;
     font-size: x-large;
 }
-
 .homepage_buttons {
     padding: 2vw;
     margin-top: 1vw;
 }
-
 .button a {
     border: solid var(--darkblue);
     border-radius: 5px;
@@ -43,24 +47,10 @@
     color: var(--white);
     background-color: var(--midblue);
 }
-
 .button a:hover {
     color: var(--lightblue)
 }
-
-@keyframes fadeOut {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
-    }
-}
-
-html {
-font-family: Verdana, Geneva, Tahoma, sans-serif;
-background-color: var(--white);
-}
+/* ------------------------- */
 
 /* Styling for sidebar in here */
 .sidebar {
@@ -76,27 +66,22 @@ background-color: var(--white);
     background-color: var(--darkblue);
     border-right: solid var(--lightblue);
 } 
-
 .insight > div {
     color: var(--white);
 }
-
 .budget {
     padding: 1vw 1vw 1vw 0vw;
     text-align: center;
     font-size: 2vw;
 }
-
 .days_till_payday {
     padding: 1vw 1vw 1vw 0vw;
     text-align: center;
     font-size: 2vw;
 }
-
 .till_payday {
     padding-bottom: 1vw;
 }
-
 .insight > hr {
     color: --white;
     margin-right: 1vw;
@@ -107,7 +92,6 @@ background-color: var(--white);
     display: flex;
     flex-direction: column;
 }
-
 .sidenav a {
     text-decoration: none;
     color: var(--white);
@@ -115,7 +99,6 @@ background-color: var(--white);
     text-align: left;
     padding-top: 1vw;
 }
-
 .sidenav a:hover {
     color: var(--lightblue);
 }
@@ -135,12 +118,12 @@ background-color: var(--white);
     border-bottom: solid var(--lightblue);
     font-size: 1.4vw;
 }
-
 .main { 
     margin-left: 13vw;
     margin-top: 10vw;
 }
 
+/* Edit/delete icon styling */
 #edit {
     background-color: transparent;
     outline: none;
@@ -153,13 +136,13 @@ background-color: var(--white);
     border: none;
     color:maroon;
 }
+/* ------------------------- */
 
+/* Styling for buttons */
 .new_x {
     padding-left: 2vw;
     padding-top: 2vw;
-    
 }
-
 .new_x a {
     border: solid var(--darkblue);
     border-radius: 5px;
@@ -170,15 +153,8 @@ background-color: var(--white);
     color: var(--white);
     background-color: var(--midblue);
 }
-
 .new_x a:hover {
     color: var(--lightblue)
-}
-
-.bottom_info {
-    display: flex;
-    padding-left: 27vw;
-    padding-top: 2vw;
 }
 
 .edit_x a {
@@ -191,11 +167,26 @@ background-color: var(--white);
     color: var(--white);
     background-color: var(--midblue);
 }
-
 .edit_x a:hover {
     color: var(--lightblue)
 }
 
+.bottom_info {
+    display: flex;
+    padding-left: 27vw;
+    padding-top: 2vw;
+}
+/* ------------------------- */
+
+/* Disappearing message styling */
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
 #message {
     color:darkred;
     font-size: x-large;
@@ -203,7 +194,9 @@ background-color: var(--white);
     width: 20vw;
     text-align: center;
 }
+/* ------------------------- */
 
+/* Styling for description box */
 .description {
     border: solid var(--darkblue);
     margin-left: 2vw;
@@ -215,7 +208,9 @@ background-color: var(--white);
     margin-left: 2vw;
     font-size: large;
 }
+/* ------------------------- */
 
+/* Transaction table styling */
 .transaction_table {
     border: solid var(--darkblue);
     border-collapse: collapse;
@@ -239,7 +234,6 @@ background-color: var(--white);
 #description_row {
     width: auto
 }
-
 .table_row {
     text-align: center;
     padding: 0.5vw;
@@ -253,7 +247,9 @@ background-color: var(--white);
 .table_row:hover {
     background-color: lightblue;
 }
+/* ------------------------- */
 
+/* Merchant/tag table styling */
 .m_t_table {
     border: solid var(--darkblue);
     border-collapse: collapse;
@@ -265,18 +261,15 @@ background-color: var(--white);
 .m_t_table tr td {
     width: 10vw;
 }
-
 .m_t_table tr td:first-child{
     width: 15vw;
 }
-
 .m_t_table tr td:nth-last-child(2){
     width:auto;
 }
 .m_t_table tr td:last-child {
     width: auto;
 }
-
 .active_row:nth-child(even) {
     text-align: center;
     padding: 0.5vw;
@@ -292,7 +285,6 @@ background-color: var(--white);
     padding: 0.5vw;
     background-color: lightblue;
 }
-
 .inactive_row:nth-child(even) {
     text-align: center;
     padding: 0.5vw;
@@ -303,7 +295,9 @@ background-color: var(--white);
     padding: 0.5vw;
     background-color: rgb(182, 182, 182);
 }
+/* ------------------------- */
 
+/* Edit form styling */
 .edit_form {
     background-color: var(--lightblue);
     display: flexbox;
@@ -315,7 +309,6 @@ background-color: var(--white);
     padding: 1%;
     width: 26vw
 }
-
 .edit_form input {
     background-color: var(--white);
     border: solid var(--darkblue);
@@ -335,13 +328,11 @@ background-color: var(--white);
     color: black;
     resize: none;
 }
-  
 .edit_form label{
     display: block;
     text-align: left;
     padding: 1vw;
 }
-
 .edit_form select {
     background-color: var(--white);
     border: solid var(--darkblue);
@@ -351,7 +342,6 @@ background-color: var(--white);
     width: 90%;
     color: black;
 }
-
 .edit_form button{
     background-color: var(--midblue);
     border: solid var(--darkblue);
@@ -364,7 +354,9 @@ background-color: var(--white);
     color: var(--white);
     font-size: 3vh;
 }
+/* ------------------------- */
 
+/* New form styling */
 .new_form {
     background-color: var(--lightblue);
     display: flexbox;
@@ -421,8 +413,9 @@ background-color: var(--white);
     color: var(--white);
     font-size: 3vh;
 }
+/* ------------------------- */
 
-
+/* Filter form styling */
 .filter_form {
     background-color: var(--lightblue);
     border: solid var(--darkblue);
@@ -436,7 +429,6 @@ background-color: var(--white);
     border: solid var(--darkblue);
     color: black;
 }
-
 .filter_form select {
     background-color: var(--white);
     border: solid var(--darkblue);

@@ -1,52 +1,55 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% block content %}
-<header class="header"><h1>Spending tracker - New Transaction</h1></header> 
-<div class = "main">
-<div class = "new_form">
-    <form action='/transactions/new' method="post">
-        <label for="date">Date:</label>
-        <input type="date" name="date" id="date" value = "{{today}}" required>
+<header class = 'header'><h1>Spending tracker - New Transaction</h1></header> 
+<div class = 'main'>
+
+<div class = 'new_form'>
+    <form action = '/transactions/new' method = 'post'>
+        <label for = 'date'>Date:</label>
+        <input type = 'date' name = 'date' id = 'date' value = '{{today}}' required>
         <br>
-        <label for="amount">Amount:</label>
-        <input type="number" name="amount" id="amount" placeholder = "Amount" step="0.01" required>
+        <label for = 'amount'>Amount:</label>
+        <input type = 'number' name = 'amount' id = 'amount' placeholder = 'Amount' step = '0.01' required>
         <br>
-        <label for="description">Description:</label>
-        <textarea id="description" name="description" placeholder="Enter description for transaction (Optional)"></textarea>
+        <label for = 'description'>Description:</label>
+        <textarea id = 'description' name = 'description' placeholder = 'Enter description for transaction (Optional)'></textarea>
         <br>
-        <label for="merchant">Merchant:</label>
-        <select id="merchant" name="merchant_id">
-            <option value="no merchant" selected = "selected">
+        <label for = 'merchant'>Merchant:</label>
+        <select id = 'merchant' name = 'merchant_id'>
+            <option value = 'no merchant' selected = 'selected'>
                 No merchant
             </option>
         {% for merchant in merchants %}
-            <option value="{{ merchant.id }}">
-            {{ merchant.name }} 
+            <option value = '{{merchant.id}}'>
+                {{merchant.name}} 
             </option>
         {% endfor %}
         </select>
         <br>
-        <label for="tag">Tag:</label>
-        <select id="tag" name="tag_id">
-            <option value="no tag" selected = "selected">
+        <label for = 'tag'>Tag:</label>
+        <select id = 'tag' name = 'tag_id'>
+            <option value = 'no tag' selected = 'selected'>
                 No tag
             </option>
         {% for tag in tags %}
-            <option value="{{ tag.id }}">
-            {{ tag.name }} 
+            <option value = '{{tag.id }}'>
+                {{tag.name}} 
             </option>
         {% endfor %}
         </select>
         <br>
-        <button type="submit">Create Transaction</button>
+        <button type = 'submit'>Create Transaction</button>
     </form>
 </div>
-<div class=bottom_info>
-    <div class='edit_x'>
-        <a href = "/transactions">Back to Transactions</a>
+
+<div class = bottom_info>
+    <div class = 'edit_x'>
+        <a href = '/transactions'>Back to Transactions</a>
     </div>
     <div id = 'message'>
         {{message}}
     </div>
 </div>
+
 </div>
 {% endblock %}

@@ -37,7 +37,7 @@ def create_tag():
     user = user_repo.select_all()[0]
     till_payday = user_repo.get_days_till_payday(user.id)
     remaining_budget = user_repo.get_remaining_budget(user.id)
-    return render_template('tags/new.html', title = 'New Tag', message = "Tag added!", days_till_payday = till_payday, remaining_budget = remaining_budget)
+    return render_template('tags/new.html', title = 'New Tag', message = 'Tag added!', days_till_payday = till_payday, remaining_budget = remaining_budget)
 
 # SHOW
 # GET '/tags/<id>

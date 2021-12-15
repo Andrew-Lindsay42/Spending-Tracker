@@ -1,43 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang = 'en'>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href={{url_for('static', filename='favicon.png')}}>
-    <script src="https://kit.fontawesome.com/e7f2007bab.js" crossorigin="anonymous"></script>
-    <link rel='stylesheet' href={{url_for('static', filename='/style.css')}}>
+    <meta charset = 'UTF-8'>
+    <meta http-equiv = 'X-UA-Compatible' content = 'IE=edge'>
+    <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0'>
+    <link rel = 'icon' href = {{url_for('static', filename = 'favicon.png')}}>
+    <script src = 'https://kit.fontawesome.com/e7f2007bab.js' crossorigin = 'anonymous'></script>
+    <link rel = 'stylesheet' href = {{url_for('static', filename = '/style.css')}}>
     <title>{{title}}</title>
 </head>
+
 <body>
-    <div class="container">
+    <div class = 'container'>
         {% block content %}
         
         {% endblock %}
     </div>
     
-    <aside class="sidebar">
+    <aside class = 'sidebar'>
         <div class = 'insight'>
-            <div class="budget_remain">
+            <div class = 'budget_remain'>
                 Budget remaining:
             </div>
-            <div class='budget'>
+            <div class = 'budget'>
                 £{{remaining_budget}}
             </div>
             <hr>
-            <div class='days_till_payday'>
+            <div class = 'days_till_payday'>
                 {{days_till_payday}}
             </div>
-            <div class="till_payday">
+            <div class = 'till_payday'>
                 days till payday.
             </div>
             <hr>
         </div>
-        <div class="sidenav">
-            <a href = "/budget_info">Budget</a>
-            <a href = "/merchants">Merchants</a>
-            <a href = "/tags">Tags</a>
-            <a href = "/transactions">Transactions</a>
+        <div class = 'sidenav'>
+            <a href = '/budget_info'>Budget</a>
+            <a href = '/merchants'>Merchants</a>
+            <a href = '/tags'>Tags</a>
+            <a href = '/transactions'>Transactions</a>
         </div>
     </aside>
 </body>

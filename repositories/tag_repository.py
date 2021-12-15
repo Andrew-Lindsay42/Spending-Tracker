@@ -2,7 +2,7 @@ from db.run_sql import run_sql
 from models.tag import Tag
 
 def save(tag):
-    sql = "INSERT INTO tags (name, active, icon_num) VALUES (%s, %s, %s) RETURNING *"
+    sql = 'INSERT INTO tags (name, active, icon_num) VALUES (%s, %s, %s) RETURNING *'
     values = [tag.name, tag.active, tag.icon_num]
     results = run_sql(sql, values)
     id = results[0]['id']
@@ -31,16 +31,16 @@ def select(id):
     return tag
 
 def delete_all():
-    sql = "DELETE FROM tags"
+    sql = 'DELETE FROM tags'
     run_sql(sql)
 
 def delete(id):
-    sql = "DELETE FROM tags WHERE id = %s"
+    sql = 'DELETE FROM tags WHERE id = %s'
     values = [id]
     run_sql(sql, values)
 
 def update(tag):
-    sql = "UPDATE tags SET (name, active, icon_num) = (%s, %s, %s) WHERE id = %s"
+    sql = 'UPDATE tags SET (name, active, icon_num) = (%s, %s, %s) WHERE id = %s'
     values = [tag.name, tag.active, tag.icon_num, tag.id]
     run_sql(sql, values)
 

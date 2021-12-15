@@ -5,7 +5,7 @@ import datetime
 from repositories import transaction_repository as transaction_repo
 
 def save(user):
-    sql = "INSERT INTO users (name, budget, payday) VALUES (%s, %s, %s) RETURNING *"
+    sql = 'INSERT INTO users (name, budget, payday) VALUES (%s, %s, %s) RETURNING *'
     values = [user.name, user.budget, user.payday]
     results = run_sql(sql, values)
     id = results[0]['id']
@@ -33,16 +33,16 @@ def select(id):
     return user
 
 def delete_all():
-    sql = "DELETE FROM users"
+    sql = 'DELETE FROM users'
     run_sql(sql)
 
 def delete(id):
-    sql = "DELETE FROM users WHERE id = %s"
+    sql = 'DELETE FROM users WHERE id = %s'
     values = [id]
     run_sql(sql, values)
 
 def update(user):
-    sql = "UPDATE users SET (name, budget, payday) = (%s, %s, %s) WHERE id = %s"
+    sql = 'UPDATE users SET (name, budget, payday) = (%s, %s, %s) WHERE id = %s'
     values = [user.name, user.budget, user.payday, user.id]
     run_sql(sql, values)
 

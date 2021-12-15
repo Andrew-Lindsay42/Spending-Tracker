@@ -36,12 +36,14 @@ def filtered_transactions():
     start_date = request.form['start_date']
     end_date = request.form['end_date']
 
+    # If the start date is later than the end date, swap the dates around.
     if start_date > end_date:
         temp_date = start_date
         start_date = end_date
         end_date = temp_date
     transactions = transaction_repo.get_custom_date(start_date, end_date)
 
+    # Check the input from the form to filter out the correct info.
     if request.form['merchant_id'] == 'no merchants':
         merchant = None
         merchant_select = 'no merchants'
@@ -52,6 +54,9 @@ def filtered_transactions():
         merchant = merchant_repo.select(request.form['merchant_id'])
         merchant_select = int(request.form['merchant_id'])
 
+    transactions = transaction_repo.filter_by_merchant(merchant, transactions)
+
+    # Check the input from the form to filter out the correct info.
     if request.form['tag_id'] == 'no tags':
         tag = None
         tag_select = 'no merchants'
@@ -62,7 +67,6 @@ def filtered_transactions():
         tag = tag_repo.select(request.form['tag_id'])
         tag_select = int(request.form['tag_id'])
 
-    transactions = transaction_repo.filter_by_merchant(merchant, transactions)
     transactions = transaction_repo.filter_by_tag(tag, transactions)
     
     return render_template('transactions/index.html', transactions = transactions, title = 'Filtered Transactions', days_till_payday = till_payday, remaining_budget = remaining_budget, start_date = start_date, end_date = end_date, merchants = merchants, tags = tags, merchant_select = merchant_select, tag_select = tag_select)
@@ -86,6 +90,8 @@ def create_transaction():
     date = request.form['date']
     amount = request.form['amount']
     description = request.form['description']
+
+    # Check the input from the form to give the correct info for creation.
     if request.form['merchant_id'] != 'no merchant':
         merchant = merchant_repo.select(request.form['merchant_id'])
     else:
@@ -134,6 +140,8 @@ def update_transaction(id):
     date = request.form['date']
     amount = request.form['amount']
     description = request.form['description']
+
+    # Check the input from the form to give the correct info for creation.
     if request.form['merchant_id'] != 'no merchant':
         merchant = merchant_repo.select(request.form['merchant_id'])
     else:

@@ -1,48 +1,50 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% block content %}
-<header class="header"><h1>Spending tracker - All Tags</h1></header>
+<header class = 'header'><h1>Spending tracker - All Tags</h1></header>
 
-<div class = "main">
+<div class = 'main'>
 
-<table class="m_t_table">
-    <tr class="table_header">
-      <th>Name</th>
-      <th>Icon</th>
-      <th>Active</th>
-      <th></th>
-      <th></th>
+<table class = 'm_t_table'>
+    <tr class = 'table_header'>
+        <th>Name</th>
+        <th>Icon</th>
+        <th>Active</th>
+        <th></th>
+        <th></th>
     </tr>
-  {% for tag in active_tags %}
-      <tr class="active_row">
-          <td>{{tag.name}}</td>
-          <td>{{tag.icon_num}}</td>
-          <td>{{tag.active}}</td>
-          <td><form action="tags/{{tag.id}}/edit">
-              <button id='edit'><i class="far fa-edit"></i></button></td>
-              </form>
-          <td><form action="tags/{{tag.id}}/delete" method = "post">
-                  <button id='delete'><i class="far fa-trash-alt"></i></button>
-              </form>
-          </td>
-      </tr>
-  {% endfor %}
-  {% for tag in inactive_tags %}
-      <tr class="inactive_row">
-          <td>{{tag.name}}</td>
-          <td>{{tag.icon_num}}</td>
-          <td>{{tag.active}}</td>
-          <td><form action="tags/{{tag.id}}/edit">
-              <button id='edit'><i class="far fa-edit"></i></button></td>
-              </form>
-          <td><form action="tags/{{tag.id}}/delete" method = "post">
-                  <button id='delete'><i class="far fa-trash-alt"></i></button>
-              </form>
-          </td>
-      </tr>
-  {% endfor %}
-  </table>
-  <div class='new_x'>
-    <a href = "/tags/new">New Tag</a>
-    </div>
-  </div>
+{% for tag in active_tags %}
+    <tr class = 'active_row'>
+        <td>{{tag.name}}</td>
+        <td>{{tag.icon_num}}</td>
+        <td>{{tag.active}}</td>
+        <td><form action = 'tags/{{tag.id}}/edit'>
+                <button id = 'edit'><i class = 'far fa-edit'></i></button></td>
+            </form>
+        <td><form action = 'tags/{{tag.id}}/delete' method = 'post'>
+                <button id = 'delete'><i class = 'far fa-trash-alt'></i></button>
+            </form>
+        </td>
+    </tr>
+{% endfor %}
+{% for tag in inactive_tags %}
+    <tr class = 'inactive_row'>
+        <td>{{tag.name}}</td>
+        <td>{{tag.icon_num}}</td>
+        <td>{{tag.active}}</td>
+        <td><form action = 'tags/{{tag.id}}/edit'>
+                <button id = 'edit'><i class = 'far fa-edit'></i></button></td>
+            </form>
+        <td><form action = 'tags/{{tag.id}}/delete' method = 'post'>
+                <button id = 'delete'><i class = 'far fa-trash-alt'></i></button>
+            </form>
+        </td>
+    </tr>
+{% endfor %}
+</table>
+
+<div class = 'new_x'>
+    <a href = '/tags/new'>New Tag</a>
+</div>
+
+</div>
 {% endblock %}

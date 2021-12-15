@@ -1,84 +1,77 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% block content %}
-<header class="header"><h1>Spending tracker - All Transactions</h1></header> 
+<header class = 'header'><h1>Spending tracker - All Transactions</h1></header> 
 
-<div class = "main">
+<div class = 'main'>
 
-  <div class = "filter_form">
-    <form action='/transactions' method="post">
-        <label for="start_date">Start date:</label>
-        <input type="date" name="start_date" id="start_date" value = "{{start_date}}">
-        <label for="end_date">End date:</label>
-        <input type="date" name="end_date" id="end_date" value = "{{end_date}}">
+<div class = 'filter_form'>
+    <form action = '/transactions' method = 'post'>
+        <label for = 'start_date'>Start date:</label>
+        <input type = 'date' name = 'start_date' id = 'start_date' value = '{{start_date}}'>
+        <label for = 'end_date'>End date:</label>
+        <input type = 'date' name = 'end_date' id = 'end_date' value = '{{end_date}}'>
         <br>
-        <label for="merchant">Merchant:</label>
-        <select id="merchant" name="merchant_id">
-            <option value="all merchants" selected = "selected">
+        <label for = 'merchant'>Merchant:</label>
+        <select id = 'merchant' name = 'merchant_id'>
+            <option value = 'all merchants' selected = 'selected'>
                 All merchants
             </option>
-            <option value="no merchants" {% if merchant_select == 'no merchants' %}
-              selected = "selected"
-            {% endif %}>
-              No merchant
-          </option>
+            <option value = 'no merchants' {% if merchant_select == 'no merchants' %} selected = 'selected' {% endif %}>
+                No merchant
+            </option>
         {% for merchant in merchants %}
-            <option value="{{ merchant.id }}"{% if merchant_select == merchant.id %}
-            selected = "selected"
-          {% endif %}>
-            {{ merchant.name }} 
+            <option value = '{{merchant.id}}'{% if merchant_select == merchant.id %} selected = 'selected' {% endif %}>
+                {{merchant.name}} 
             </option>
         {% endfor %}
         </select>
-        <label for="tag">Tag:</label>
-        <select id="tag" name="tag_id">
-            <option value="all tags" selected = "selected">
+        <label for = 'tag'>Tag:</label>
+        <select id = 'tag' name = 'tag_id'>
+            <option value = 'all tags' selected = 'selected'>
                 All tags
             </option>
-            <option value="no tags" {% if tag_select == 'no tags' %}
-            selected = "selected"
-          {% endif %}>
-              No tag
-          </option>
+            <option value = 'no tags' {% if tag_select == 'no tags' %} selected = 'selected' {% endif %}>
+                No tag
+            </option>
         {% for tag in tags %}
-            <option value="{{ tag.id }}" {% if tag_select == tag.id %}
-            selected = "selected"
-          {% endif %}>
-            {{ tag.name }} 
+            <option value = '{{tag.id}}' {% if tag_select == tag.id %} selected = 'selected' {% endif %}>
+                {{tag.name}}
             </option>
         {% endfor %}
         </select>
-        <button type="submit">Filter</button>
+        <button type = 'submit'>Filter</button>
     </form>
 </div>
 
-<table class="transaction_table">
-  <tr class="table_header">
-    <th><i class="far fa-calendar-alt"></i></th>
-    <th><i class="fas fa-pound-sign"></i></th>
-    <th><i class="fas fa-cash-register"></i></th>
-    <th><i class="fas fa-tags"></i></th>
-    <th></th>
-    <th></th>
-  </tr>
+<table class = 'transaction_table'>
+    <tr class = 'table_header'>
+        <th><i class = 'far fa-calendar-alt'></i></th>
+        <th><i class = 'fas fa-pound-sign'></i></th>
+        <th><i class = 'fas fa-cash-register'></i></th>
+        <th><i class = 'fas fa-tags'></i></th>
+        <th></th>
+        <th></th>
+    </tr>
 {% for transaction in transactions %}
-    <tr class="table_row">
+    <tr class = 'table_row'>
         <td>{{transaction.date}}</td>
-        <td><a href="/transactions/{{transaction.id}}">{{transaction.amount}}</a></td>
+        <td><a href = '/transactions/{{transaction.id}}'>{{transaction.amount}}</a></td>
         <td>{{transaction.merchant.name}}</td>
         <td>{{transaction.tag.name}}</td>
-        <td><form action="/transactions/{{transaction.id}}/edit">
-            <button id='edit'><i class="far fa-edit"></i></button></td>
+        <td><form action = '/transactions/{{transaction.id}}/edit'>
+            <button id = 'edit'><i class = 'far fa-edit'></i></button></td>
             </form>
-        <td><form action="transactions/{{transaction.id}}/delete" method = "post">
-                <button id='delete'><i class="far fa-trash-alt"></i></button>
+        <td><form action = 'transactions/{{transaction.id}}/delete' method = 'post'>
+                <button id = 'delete'><i class = 'far fa-trash-alt'></i></button>
             </form>
         </td>
     </tr>
 {% endfor %}
 </table>
 
-<div class='new_x'>
-<a href = "/transactions/new">New Transaction</a>
+<div class = 'new_x'>
+<a href = '/transactions/new'>New Transaction</a>
 </div>
+
 </div>
 {% endblock %}

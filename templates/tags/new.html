@@ -1,28 +1,29 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% block content %}
-<header class="header"><h1>Spending tracker - New Tag</h1></header>
-<div class = "main">
+<header class = 'header'><h1>Spending tracker - New Tag</h1></header>
 
-<div class = "new_form">
-    <form action='/tags/new' method="post">
-        
-        <label for="name">Name:</label>
-        <input type="text" name="name" id="name" placeholder = "Name" required>
-        <br>
-        <label for="icon">Icon:</label>
-        <input type="number" name="icon" id="icon" placeholder = "Icon" step="1" required>
-        <br>
+<div class = 'main'>
 
-        <button type="submit">Create tag</button>
+<div class = 'new_form'>
+    <form action = '/tags/new' method = 'post'>
+        <label for = 'name'>Name:</label>
+        <input type = 'text' name = 'name' id = 'name' placeholder = 'Name' required>
+        <br>
+        <label for = 'icon'>Icon:</label>
+        <input type = 'number' name = 'icon' id = 'icon' placeholder = 'Icon' step = '1' required>
+        <br>
+        <button type = 'submit'>Create tag</button>
     </form>
 </div>
-<div class=bottom_info>
-    <div class='edit_x'>
-        <a href = "/tags">Back to Tags</a>
+
+<div class = bottom_info>
+    <div class = 'edit_x'>
+        <a href = '/tags'>Back to Tags</a>
     </div>
     <div id = 'message'>
         {{message}}
     </div>
 </div>
+
 </div>
 {% endblock %}

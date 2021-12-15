@@ -1,35 +1,41 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% block content %}
-<header class="header"><h1>Spending tracker - Transaction from {{transaction.date}}</h1></header> 
-<div class = "main">
-<table class="transaction_table">
-    <tr class="table_header">
-        <th><i class="far fa-calendar-alt"></i></th>
-        <th><i class="fas fa-pound-sign"></i></th>
-        <th><i class="fas fa-cash-register"></i></th>
-        <th><i class="fas fa-tags"></i></th>
-      <th></th>
-      <th></th>
+<header class = 'header'><h1>Spending tracker - Transaction from {{transaction.date}}</h1></header> 
+
+<div class = 'main'>
+
+<table class = 'transaction_table'>
+    <tr class = 'table_header'>
+        <th><i class = 'far fa-calendar-alt'></i></th>
+        <th><i class = 'fas fa-pound-sign'></i></th>
+        <th><i class = 'fas fa-cash-register'></i></th>
+        <th><i class = 'fas fa-tags'></i></th>
+        <th></th>
+        <th></th>
     </tr>
-    <tr class="table_row">
+    <tr class = 'table_row'>
         <td>{{transaction.date}}</td>
         <td>{{transaction.amount}}</td>
         <td>{{transaction.merchant.name}}</td>
         <td>{{transaction.tag.name}}</td>
-        <td><form action="/transactions/{{transaction.id}}/edit">
-            <button id='edit'><i class="far fa-edit"></i></button></td>
+        <td><form action = '/transactions/{{transaction.id}}/edit'>
+            <button id = 'edit'><i class = 'far fa-edit'></i></button></td>
             </form>
-        <td><form action="/transactions/{{transaction.id}}/delete" method = "post">
-            <button id='delete'><i class="far fa-trash-alt"></i></button>
+        <td><form action = '/transactions/{{transaction.id}}/delete' method = 'post'>
+            <button id = 'delete'><i class = 'far fa-trash-alt'></i></button>
             </form>
         </td>
     </tr>
 </table>
 
-<p class='description_head'>Description:</p>
-<p class='description'>{{transaction.description}}</p>
-<div class='new_x'>
-    <a href = "/transactions">Back to Transactions</a>
+<div>
+    <p class = 'description_head'>Description:</p>
+    <p class = 'description'>{{transaction.description}}</p>
 </div>
+
+<div class = 'new_x'>
+    <a href = '/transactions'>Back to Transactions</a>
+</div>
+
 </div>
 {% endblock %}

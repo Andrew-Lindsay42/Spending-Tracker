@@ -102,7 +102,7 @@ tag_repo.update(groceries)
 
 forgotten_spend.description = "Can't remember what this was"
 transaction_repo.update(forgotten_spend)
-forgotten_spend.description = "Bougie pie"
+forgotten_spend.description = 'Bougie pie'
 transaction_repo.update(forgotten_spend)
 forgotten_spend.merchant = waitrose
 transaction_repo.update(forgotten_spend)

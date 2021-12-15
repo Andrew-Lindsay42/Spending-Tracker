@@ -1,31 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang = 'en'>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href={{url_for('static', filename='favicon.png')}}>
-    <script src="https://kit.fontawesome.com/e7f2007bab.js" crossorigin="anonymous"></script>
-    <link rel='stylesheet' href={{url_for('static', filename='/style.css')}}>
+    <meta charset = 'UTF-8'>
+    <meta http-equiv = 'X-UA-Compatible' content = 'IE=edge'>
+    <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0'>
+    <link rel = 'icon' href = {{url_for('static', filename = 'favicon.png')}}>
+    <script src = 'https://kit.fontawesome.com/e7f2007bab.js' crossorigin = 'anonymous'></script>
+    <link rel = 'stylesheet' href = {{url_for('static', filename = '/style.css')}}>
     <title>{{title}}</title>
 </head>
 <body>
-    <h1 class='heading'> Spending tracker</h1>
-    <div class="homepage">
-        <div class='homepage_buttons'>
-        <div class='button'>
-            <a href = "/transactions">View Transactions</a>
+    <h1 class = 'heading'> Spending tracker</h1>
+    <div class = 'homepage'>
+        <div class = 'homepage_buttons'>
+        <div class = 'button'>
+            <a href = '/transactions'>View Transactions</a>
         </div>
         </div>
-        <div class='homepage_buttons'>
-        <div class='button'>
-            <a href = "/budget_info">Budget</a>
+        <div class = 'homepage_buttons'>
+        <div class = 'button'>
+            <a href = '/budget_info'>Budget</a>
         </div>
         </div>
     </div>
     <br>
-    <blockquote class='quote'>
-        "Mo' Money, Mo' Problems" - <cite> The Notorious B.I.G, 1997</cite>
+    <blockquote class = 'quote'>
+        'Mo' Money, Mo' Problems' - <cite> The Notorious B.I.G, 1997</cite>
     </blockquote>
 
 
@@ -39,47 +39,46 @@
   font-family: Arial, sans-serif;
   text-shadow: 0 0 3px #000;
 }
-
 @-webkit-keyframes moneys-fall{0%{top:-10%}100%{top:100%}}@-webkit-keyframes moneys-shake{0%,100%{-webkit-transform:translateX(0);transform:translateX(0)}50%{-webkit-transform:translateX(80px);transform:translateX(80px)}}@keyframes moneys-fall{0%{top:-10%}100%{top:100%}}@keyframes moneys-shake{0%,100%{transform:translateX(0)}50%{transform:translateX(80px)}}.money{position:fixed;top:-10%;z-index:9999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default;-webkit-animation-name:moneys-fall,moneys-shake;-webkit-animation-duration:10s,3s;-webkit-animation-timing-function:linear,ease-in-out;-webkit-animation-iteration-count:infinite,infinite;-webkit-animation-play-state:running,running;animation-name:moneys-fall,moneys-shake;animation-duration:10s,3s;animation-timing-function:linear,ease-in-out;animation-iteration-count:infinite,infinite;animation-play-state:running,running}.money:nth-of-type(0){left:1%;-webkit-animation-delay:0s,0s;animation-delay:0s,0s}.money:nth-of-type(1){left:10%;-webkit-animation-delay:1s,1s;animation-delay:1s,1s}.money:nth-of-type(2){left:20%;-webkit-animation-delay:6s,.5s;animation-delay:6s,.5s}.money:nth-of-type(3){left:30%;-webkit-animation-delay:4s,2s;animation-delay:4s,2s}.money:nth-of-type(4){left:40%;-webkit-animation-delay:2s,2s;animation-delay:2s,2s}.money:nth-of-type(5){left:50%;-webkit-animation-delay:8s,3s;animation-delay:8s,3s}.money:nth-of-type(6){left:60%;-webkit-animation-delay:6s,2s;animation-delay:6s,2s}.money:nth-of-type(7){left:70%;-webkit-animation-delay:2.5s,1s;animation-delay:2.5s,1s}.money:nth-of-type(8){left:80%;-webkit-animation-delay:1s,0s;animation-delay:1s,0s}.money:nth-of-type(9){left:90%;-webkit-animation-delay:3s,1.5s;animation-delay:3s,1.5s}.money:nth-of-type(10){left:25%;-webkit-animation-delay:2s,0s;animation-delay:2s,0s}.money:nth-of-type(11){left:65%;-webkit-animation-delay:4s,2.5s;animation-delay:4s,2.5s}
 </style>
-<div class="moneys" aria-hidden="true">
-  <div class="money">
-    <i class="fas fa-money-bill-wave-alt"></i>
-  </div>
-  <div class="money">
-    <i class="fas fa-yen-sign"></i>
-  </div>
-  <div class="money">
-    <i class="fas fa-money-bill-alt"></i>
-  </div>
-  <div class="money">
-    <i class="fas fa-money-bill-wave-alt"></i>
-  </div>
-  <div class="money">
-    <i class="fas fa-money-bill-wave"></i>
-  </div>
-  <div class="money">
-    <i class="fas fa-pound-sign"></i>
-  </div>
-  <div class="money">
-    <i class="fas fa-money-bill"></i>
-  </div>
-  <div class="money">
-    <i class="fas fa-euro-sign"></i>
-  </div>
-  <div class="money">
-    <i class="far fa-money-bill-alt"></i>
-  </div>
-  <div class="money">
-    <i class="fas fa-dollar-sign"></i>
-  </div>
-  <div class="money">
-    <i class="fas fa-money-bill-wave-alt"></i>
-  </div>
-  <div class="money">
-    <i class="fas fa-money-bill"></i>
-  </div>
-</div>
+<div class = 'moneys' aria-hidden = 'true'>
+    <div class = 'money'>
+        <i class = 'fas fa-money-bill-wave-alt'></i>
+    </div>
+    <div class = 'money'>
+        <i class = 'fas fa-yen-sign'></i>
+    </div>
+    <div class = 'money'>
+        <i class = 'fas fa-money-bill-alt'></i>
+    </div>
+    <div class = 'money'>
+        <i class = 'fas fa-money-bill-wave-alt'></i>
+    </div>
+    <div class = 'money'>
+        <i class = 'fas fa-money-bill-wave'></i>
+    </div>
+    <div class = 'money'>
+        <i class = 'fas fa-pound-sign'></i>
+    </div>
+    <div class = 'money'>
+        <i class = 'fas fa-money-bill'></i>
+    </div>
+    <div class = 'money'>
+        <i class = 'fas fa-euro-sign'></i>
+    </div>
+    <div class = 'money'>
+        <i class = 'far fa-money-bill-alt'></i>
+    </div>
+    <div class = 'money'>
+        <i class = 'fas fa-dollar-sign'></i>
+    </div>
+    <div class = 'money'>
+        <i class = 'fas fa-money-bill-wave-alt'></i>
+    </div>
+    <div class = 'money'>
+        <i class = 'fas fa-money-bill'></i>
+    </div>
+    </div>
 
 </body>
 </html>
