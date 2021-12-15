@@ -66,6 +66,7 @@ def get_days_till_payday(id):
         days_to_go = payday - today
 
         if days_to_go < 0:
+            payday = int(result['payday'])
             days_to_go = (days_in_month - today) + payday
     return days_to_go
 
