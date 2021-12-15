@@ -7,15 +7,18 @@
   <div class = "filter_form">
     <form action='/transactions' method="post">
         <label for="start_date">Start date:</label>
-        <input type="date" name="start_date" id="start_date" placeholder = "{{today}}">
+        <input type="date" name="start_date" id="start_date" value = "{{start_date}}">
         <label for="end_date">End date:</label>
-        <input type="date" name="end_date" id="end_date" value = "{{today}}">
+        <input type="date" name="end_date" id="end_date" value = "{{end_date}}">
         <br>
         <label for="merchant">Merchant:</label>
         <select id="merchant" name="merchant_id">
             <option value="all merchants" selected = "selected">
                 All merchants
             </option>
+            <option value="no merchants">
+              No merchant
+          </option>
         {% for merchant in merchants %}
             <option value="{{ merchant.id }}">
             {{ merchant.name }} 
@@ -27,6 +30,9 @@
             <option value="all tags" selected = "selected">
                 All tags
             </option>
+            <option value="no tags">
+              No tag
+          </option>
         {% for tag in tags %}
             <option value="{{ tag.id }}">
             {{ tag.name }} 

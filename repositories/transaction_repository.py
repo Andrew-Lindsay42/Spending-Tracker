@@ -141,3 +141,39 @@ def get_custom_date(start_date, end_date):
         transaction_list.append(transaction)
     transaction_list.sort(key= lambda transaction : transaction.date)
     return transaction_list
+
+def filter_by_merchant(merchant, filter_list):
+    filtered_list = []
+    if merchant == 'All':
+        filtered_list = filter_list
+    else:
+        if merchant is not None:
+            for transaction in filter_list:
+                if transaction.merchant is not None:
+                    if transaction.merchant.id == merchant.id:
+                        filtered_list.append(transaction)
+                else:
+                    filter_list.remove(transaction)
+        else:
+            for transaction in filter_list:
+                if transaction.merchant is None:
+                    filtered_list.append(transaction)
+    return filtered_list
+
+def filter_by_tag(tag, filter_list):
+    filtered_list = []
+    if tag == 'All':
+        filtered_list = filter_list
+    else:
+        if tag is not None:
+            for transaction in filter_list:
+                if transaction.tag is not None:
+                    if transaction.tag.id == tag.id:
+                        filtered_list.append(transaction)
+                else:
+                    filter_list.remove(transaction)
+        else:
+            for transaction in filter_list:
+                if transaction.tag is None:
+                    filtered_list.append(transaction)
+    return filtered_list

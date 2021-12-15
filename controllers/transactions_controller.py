@@ -20,7 +20,46 @@ def transactions():
     today = datetime.date.today()
     merchants = merchant_repo.select_all()
     tags = tag_repo.select_all()
-    return render_template('transactions/index.html', transactions = default_transactions_list, title = 'All Transactions', days_till_payday = till_payday, remaining_budget = remaining_budget, today = today, merchants = merchants, tags = tags)
+    return render_template('transactions/index.html', transactions = default_transactions_list, title = 'All Transactions', days_till_payday = till_payday, remaining_budget = remaining_budget, start_date = today, end_date = today, merchants = merchants, tags = tags)
+
+
+# GET '/transactions', but with filter applied
+@transactions_blueprint.route('/transactions', methods = ['post'])
+def filtered_transactions():
+    user = user_repo.select_all()[0]
+    till_payday = user_repo.get_days_till_payday(user.id)
+    remaining_budget = user_repo.get_remaining_budget(user.id)
+    today = datetime.date.today()
+    merchants = merchant_repo.select_all()
+    tags = tag_repo.select_all()
+
+    start_date = request.form['start_date']
+    end_date = request.form['end_date']
+
+    if start_date > end_date:
+        temp_date = start_date
+        start_date = end_date
+        end_date = temp_date
+    transactions = transaction_repo.get_custom_date(start_date, end_date)
+
+    if request.form['merchant_id'] == 'no merchants':
+        merchant = None
+    elif request.form['merchant_id'] == 'all merchants':
+        merchant = 'All'
+    else:
+        merchant = merchant_repo.select(request.form['merchant_id'])
+
+    if request.form['tag_id'] == 'no tags':
+        tag = None
+    elif request.form['tag_id'] == 'all tags':
+        tag = 'All'
+    else:
+        tag = tag_repo.select(request.form['tag_id'])
+
+    transactions = transaction_repo.filter_by_merchant(merchant, transactions)
+    transactions = transaction_repo.filter_by_tag(tag, transactions)
+    
+    return render_template('transactions/index.html', transactions = transactions, title = 'Filtered Transactions', days_till_payday = till_payday, remaining_budget = remaining_budget, start_date = start_date, end_date = end_date, merchants = merchants, tags = tags)
 
 # SHOW
 # GET '/transactions/new'
