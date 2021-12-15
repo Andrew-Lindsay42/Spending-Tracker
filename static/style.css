@@ -421,4 +421,40 @@ background-color: var(--white);
     color: var(--white);
     font-size: 3vh;
 }
+
+
+.filter_form {
+    background-color: var(--lightblue);
+    border: solid var(--darkblue);
+    border-radius: 1%;
+    padding: 1%;
+    margin-left: 2vw;
+    width: 43.25vw;
+}
+.filter_form input {
+    background-color: var(--white);
+    border: solid var(--darkblue);
+    color: black;
+}
+
+.filter_form select {
+    background-color: var(--white);
+    border: solid var(--darkblue);
+    color: black;
+}
+.filter_form label{
+    text-align: left;
+}
+.filter_form button{
+    background-color: var(--midblue);
+    border: solid var(--darkblue);
+    border-radius: 5px;
+    height: auto;
+    margin-top: 1vw;
+    margin-left: 2vw;
+    width: 10vw;
+    text-align: center;
+    color: var(--white);
+    font-size: 3vh;
+}
 /* ------------------------- */
