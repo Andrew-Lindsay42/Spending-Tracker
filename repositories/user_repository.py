@@ -67,6 +67,14 @@ def get_days_till_payday(id):
 
         if days_to_go < 0:
             payday = int(result['payday'])
+            if month == 12:
+                month = 1
+                year += 1
+            else:
+                month += 1
+            days_next_month = calendar.monthrange(year, month)[1]
+            if payday > days_next_month:
+                payday = days_next_month
             days_to_go = (days_in_month - today) + payday
     return days_to_go
 
@@ -96,7 +104,6 @@ def get_remaining_budget(id):
                 year -= 1
             else:
                 month -= 1
-                year -= 1
             days_last_month = calendar.monthrange(year, month)[1]
             if payday > days_last_month:
                 payday = days_last_month
@@ -109,7 +116,6 @@ def get_remaining_budget(id):
                 year += 1
             else:
                 month += 1
-                year += 1
             days_next_month = calendar.monthrange(year, month)[1]
             if payday > days_next_month:
                 payday = days_next_month
